@@ -1,0 +1,2408 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"
+      integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css"
+      integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- AOS CSS -->
+    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0%;
+        padding: 0%;
+      }
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+        /* overflow-y: hidden;  */
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 9;
+        background: #fff;
+      }
+
+      .header-container {
+        display: grid;
+        grid-template-columns: 2fr 7fr 3fr;
+        gap: 40px;
+        padding: 20px 30px;
+        text-align: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .menu {
+        font-size: 35px;
+      }
+
+      .icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        font-size: 30px;
+      }
+      .hamburg aside ul {
+        list-style: none;
+        font-family: "Sansation", sans-serif;
+        text-transform: uppercase;
+        text-align: start;
+      }
+
+      .hamburg aside {
+        display: block;
+        transition: all 0.6 ease-in-out;
+        transform: translateX(-300px);
+        position: absolute;
+        left: 0%;
+        top: 0%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        width: 300px;
+        height: 100vh;
+      }
+      .hamburg aside nav ul li a {
+        color: #000000;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 20px;
+        font-weight: 650;
+        text-decoration: none;
+      }
+      .hamburg aside nav ul li {
+        margin-bottom: 20px;
+      }
+      .hamburg aside nav ul li :hover {
+        color: purple;
+      }
+      .hamburg .close {
+        color: #000000;
+        position: absolute;
+        top: 60px;
+        right: 40px;
+      }
+      .hamburg .close i {
+        font-size: 30px;
+      }
+      .menu-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .cars-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #000000;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 20px;
+        font-weight: 650;
+        text-decoration: none;
+      }
+
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        width: 220px;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        z-index: 100;
+      }
+
+      .dropdown a {
+        display: block;
+        padding: 12px 16px;
+        color: #000;
+        text-decoration: none;
+        border-bottom: 1px solid #eee;
+      }
+
+      .dropdown a:hover {
+        background-color: #f5f5f5;
+      }
+
+      .close-icon {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        font-size: 20px;
+        color: #888;
+        cursor: pointer;
+      }
+
+      .dropdown-header {
+        font-weight: bold;
+        padding: 12px 16px 4px;
+      }
+
+      #arrow {
+        position: absolute;
+        top: 0px;
+        left: 100px;
+      }
+
+      .icon-btn {
+        background: none;
+        border: none;
+        font-size: 26px;
+        cursor: pointer;
+      }
+
+      /* Full-height right slider panel */
+      .slider-panel {
+        height: 100vh;
+        width: 350px;
+        position: fixed;
+        top: 0;
+        right: -350px;
+        background-color: #fff;
+        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+        transition: right 0.4s ease;
+        z-index: 1000;
+        padding: 24px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        padding: 30px 70px;
+      }
+      .slider-icons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .slider-panel.open {
+        right: 0;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        font-size: 45px;
+        font-weight: bold;
+        color: #444;
+        cursor: pointer;
+      }
+
+      .slider-panel h2 {
+        margin-top: 40px;
+        font-size: 25px;
+        text-align: start;
+      }
+      .slider-panel p {
+        margin-top: 20px;
+        font-size: 16px;
+        text-align: start;
+        color: #00000081;
+      }
+      .info1 {
+        color: teal;
+        font-weight: 400;
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: start;
+      }
+
+      .note {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        text-align: start;
+        color: #00000081;
+      }
+
+      .dropdown-container {
+        width: 200px;
+        position: relative;
+      }
+
+      .dropdown-selected {
+        padding: 8px 10px;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 18px;
+      }
+
+      .dropdown-selected:after {
+        content: "▼";
+        font-size: 14px;
+        margin-left: 10px;
+        color: #777;
+      }
+
+      .dropdown-list {
+        position: absolute;
+        top: 110%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        max-height: 250px;
+        overflow-y: auto;
+        z-index: 100;
+        display: none;
+      }
+
+      .dropdown-item {
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      .dropdown-item img {
+        width: 20px;
+        height: 14px;
+        margin-right: 10px;
+        object-fit: cover;
+      }
+
+      .dropdown-item:hover {
+        background-color: #f0f0f0;
+      }
+      .other-countries {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: start;
+      }
+      .global-btn:hover {
+        background-color: #b70826;
+        color: white;
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      .global-btn {
+        background-color: black;
+        color: white;
+        padding: 12px;
+        text-align: center;
+        font-weight: 400;
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        font-size: 20px;
+      }
+      .info {
+        font-size: 14px;
+        color: #222;
+        margin-top: 16px;
+      }
+
+      .info-box {
+        background-color: #f0fbfc;
+        border-left: 4px solid #58b3c0;
+        padding: 12px 14px;
+        margin-top: 20px;
+        color: #2b727a;
+        font-size: 14px;
+      }
+
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        z-index: 1000;
+        background-color: transparent;
+      }
+
+      header.scrolled {
+        background-color: white;
+        box-shadow: 0 0 14px 6px #898787;
+        /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+      }
+      .cart-panel {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 300px;
+        background-color: white;
+        z-index: 9999;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      /* Header with icons */
+      .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 30px;
+        margin-bottom: 40px;
+      }
+
+      /* Buttons */
+      .cart-body .cart-btn {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 20px;
+        font-size: 25px;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 1px;
+        font-weight: 500;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .cart-grey {
+        background-color: #999;
+        color: black;
+      }
+      .cart-black {
+        background-color: black;
+        color: white;
+      }
+      .cart-grey:hover {
+        background-color: #b70826;
+        transition: all 2s ease-in-out;
+        transform: scale(1.1);
+      }
+      .cart-black:hover {
+        background-color: #b70826;
+        transition: all 2s ease-in-out;
+        transform: scale(1.1);
+      }
+
+      .header-video video {
+        width: 100%;
+        height: auto;
+      }
+      #classic-info {
+        padding: 100px 50px;
+        text-align: center;
+      }
+      .classic-in h3:hover {
+        color: #b70826;
+      }
+      img:hover {
+        transform: scale(1.1);
+      }
+      .classic-in h3 {
+        font-size: 35px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 60px;
+        animation: move1 4s ease-in-out infinite alternate-reverse;
+      }
+
+      @keyframes move1 {
+        0% {
+          transform: translate(0);
+        }
+
+        50% {
+          transform: translateX(20px) scale(1.3);
+        }
+
+        100% {
+          transform: translate(0);
+        }
+      }
+
+      .classic-in h5 {
+        font-size: 30px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      .classic-in span:hover {
+        color: #a60722;
+      }
+      .classic-in span {
+        font-size: 35px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 50px;
+      }
+      .classic-in p {
+        font-size: 20px;
+        font-weight: 350;
+        padding: 20px 150px;
+      }
+      #dream {
+        padding: 10px 70px;
+      }
+      .dream-car h2 {
+        font-size: 50px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 60px;
+      }
+      .dream-car h2:hover {
+        color: #b70826;
+      }
+      .dream-car p {
+        font-size: 20px;
+        font-weight: 400;
+        color: #000000a2;
+      }
+      .dream-info a {
+        text-decoration: none;
+      }
+      .dream-info span {
+        color: #b70826;
+      }
+      .dream-car {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        text-align: start;
+      }
+      .dream-photo {
+        overflow: hidden;
+      }
+      .dream-photo img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      #official {
+        padding: 100px 70px;
+        text-align: center;
+        margin-top: 80px;
+        background-color: #f5f5f5;
+      }
+      .official-brabus {
+        padding: 50px auto;
+      }
+      .official-brabus h2 {
+        font-size: 40px;
+        font-weight: 350;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        animation: move1 4s ease-in-out infinite alternate-reverse;
+      }
+
+      @keyframes move1 {
+        0% {
+          transform: translate(0);
+        }
+
+        50% {
+          transform: translateX(20px) scale(1.3);
+        }
+
+        100% {
+          transform: translate(0);
+        }
+      }
+
+      .official-brabus h2:hover {
+        color: #b70826;
+      }
+      .official-brabus p {
+        font-size: 22px;
+        font-weight: 300;
+        padding: 60px 120px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+      }
+      .official-brabus button {
+        padding: 12px 150px;
+        background-color: #000;
+        color: #fff;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 20px;
+        box-shadow: 0 0 14px 6px #898787;
+      }
+      .official-brabus button:hover {
+        background-color: #b70826;
+        color: white;
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      #restoration {
+        padding: 5px 100px;
+      }
+      .restor {
+        display: flex;
+      }
+      .restor1 {
+        position: relative;
+        overflow: hidden;
+      }
+      .rest-info {
+        position: absolute;
+        bottom: 7%;
+        left: 35%;
+        text-align: center;
+        align-items: center;
+      }
+      .restor2 {
+        position: relative;
+        overflow: hidden;
+      }
+      .rest-info2 {
+        position: absolute;
+        bottom: 7%;
+        left: 35%;
+        text-align: center;
+        align-items: center;
+      }
+      .restor {
+        overflow: hidden;
+      }
+      .restor img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .restor button {
+        padding: 10px 50px;
+        background-color: #000;
+        color: #fff;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 20px;
+        font-size: 20px;
+        box-shadow: 0 0 14px 6px #898787;
+      }
+      .restor h2 {
+        font-size: 35px;
+        font-weight: 350;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      .restor button:hover {
+        background-color: #b70826;
+        color: white;
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      .car-craft h2 {
+        font-size: 40px;
+        font-weight: 400;
+        font-family: "Rajdhani", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .car-craft {
+        text-align: center;
+        padding: 100px 80px;
+      }
+      .car-craft p {
+        font-size: 22px;
+        font-weight: 320;
+        padding: 60px 120px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+      }
+      .car-craft span {
+        font-size: 40px;
+        font-weight: 550;
+        text-transform: uppercase;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 2px;
+      }
+      .car-craft span:hover {
+        color: #b70826;
+      }
+      .grade1 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        justify-content: center;
+        text-align: start;
+      }
+      #grade {
+        padding: 10px 70px;
+      }
+      .grade-car h2 {
+        font-size: 50px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 60px;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .grade-car h2:hover {
+        color: #a60722;
+      }
+      .grade-car p {
+        font-size: 20px;
+        font-weight: 400;
+        color: #000000b4;
+      }
+      .grade-car-image {
+        overflow: hidden;
+      }
+      .grade-car-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .highlight-model {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        justify-content: center;
+        text-align: start;
+      }
+      #highlights {
+        padding: 100px 70px;
+      }
+      .model-info h2 {
+        font-size: 50px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 60px;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .model-info h2:hover {
+        color: #a60722;
+      }
+      .model-info p {
+        font-size: 20px;
+        font-weight: 400;
+        color: #000000b4;
+        margin-bottom: 30px;
+      }
+      .model-image {
+        overflow: hidden;
+      }
+      .model-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .model-info button {
+        padding: 10px 50px;
+        background-color: #000;
+        color: #fff;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 20px;
+        font-size: 20px;
+        box-shadow: 0 0 14px 6px #898787;
+      }
+
+      .model-info button:hover {
+        background-color: #b70826;
+        color: white;
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      .icons-image {
+        position: relative;
+      }
+      .icons-image img {
+        width: 100%;
+        height: 100%;
+      }
+      .icons-info {
+        position: absolute;
+        top: 10%;
+        left: 5%;
+      }
+      .icons-info h2 {
+        font-size: 30px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .icons-info h2:hover {
+        color: #a60722;
+      }
+      .icons-info p {
+        font-size: 20px;
+        font-weight: 400;
+      }
+      .icons-info button {
+        padding: 5px 20px;
+        background-color: #000;
+        color: #fff;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 20px;
+        font-size: 20px;
+        box-shadow: 0 0 14px 6px #898787;
+      }
+
+      .icons-info button:hover {
+        background-color: #b70826;
+        color: white;
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      #sales {
+        text-align: center;
+        color: whitesmoke;
+        background-color: #000000;
+      }
+      .sales1 h2 {
+        padding-top: 120px;
+        text-transform: uppercase;
+        font-size: 50px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+        margin-bottom: 50px;
+      }
+      .sales1 h2:hover {
+        color: #b70826;
+      }
+      .sales1 p {
+        text-transform: capitalize;
+        font-size: 30px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+        margin-bottom: 50px;
+      }
+
+      .car-hover {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 40px;
+        padding: 50px;
+        background-color: #000000;
+      }
+      .car-hover img {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+      .car-card {
+        width: 420px;
+        height: 580px;
+        background: #f6dfe1;
+        backdrop-filter: blur(20px);
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 10;
+      }
+
+      .car-card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          from 0deg,
+          transparent,
+          rgba(255, 215, 0, 0.1),
+          transparent,
+          rgba(0, 255, 255, 0.1),
+          transparent
+        );
+        animation: borderRotate 8s linear infinite;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .car-card:hover::before {
+        opacity: 1;
+      }
+
+      .car-card:hover {
+        transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25),
+          0 0 0 1px rgba(255, 255, 255, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      }
+
+      @keyframes borderRotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .car-image {
+        width: 100%;
+        height: 280px;
+        background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .car-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .car-card:hover .car-image::before {
+        left: 100%;
+      }
+
+      .car-silhouette {
+        width: 340px;
+        height: 130px;
+        background: rgba(255, 255, 255, 0.95);
+        clip-path: polygon(
+          8% 75%,
+          22% 45%,
+          32% 30%,
+          42% 25%,
+          58% 25%,
+          68% 30%,
+          78% 45%,
+          92% 65%,
+          88% 78%,
+          82% 82%,
+          18% 82%
+        );
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .car-silhouette::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.8) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .car-card:hover .car-silhouette {
+        transform: scale(1.15) rotateZ(2deg);
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.6;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.5);
+        }
+      }
+
+      .floating-particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        animation: particleFloat 8s ease-in-out infinite;
+      }
+
+      .particle:nth-child(1) {
+        top: 15%;
+        left: 15%;
+        animation-delay: 0s;
+      }
+      .particle:nth-child(2) {
+        top: 25%;
+        left: 80%;
+        animation-delay: 1.5s;
+      }
+      .particle:nth-child(3) {
+        top: 70%;
+        left: 25%;
+        animation-delay: 3s;
+      }
+      .particle:nth-child(4) {
+        top: 60%;
+        left: 75%;
+        animation-delay: 4.5s;
+      }
+
+      @keyframes particleFloat {
+        0%,
+        100% {
+          transform: translateY(0px) scale(1);
+          opacity: 0.4;
+        }
+        25% {
+          transform: translateY(-15px) scale(1.2);
+          opacity: 0.8;
+        }
+        50% {
+          transform: translateY(-25px) scale(1.5);
+          opacity: 1;
+        }
+        75% {
+          transform: translateY(-15px) scale(1.2);
+          opacity: 0.8;
+        }
+      }
+
+      .car-info {
+        padding: 30px;
+        position: relative;
+        height: 300px;
+      }
+
+      .car-title {
+        font-size: 24px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+        transform: translateY(10px);
+        opacity: 0;
+        animation: titleSlideIn 0.8s ease-out 0.3s forwards;
+      }
+
+      .car-category {
+        color: #8e8e93;
+        font-size: 12px;
+        font-weight: 500;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transform: translateY(10px);
+        opacity: 0;
+        animation: titleSlideIn 0.8s ease-out 0.5s forwards;
+      }
+
+      @keyframes titleSlideIn {
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .car-specs {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        transition-delay: 0.2s;
+      }
+
+      .car-card:hover .car-specs {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .spec-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform: translateX(-20px);
+        opacity: 0;
+        animation: specSlideIn 0.6s ease-out forwards;
+      }
+
+      .spec-row:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .spec-row:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .spec-row:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .spec-row:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .spec-row:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .spec-row:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes specSlideIn {
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .car-card:hover .spec-row:hover {
+        background: linear-gradient(
+          90deg,
+          rgba(102, 126, 234, 0.05),
+          rgba(118, 75, 162, 0.05)
+        );
+        padding-left: 15px;
+        margin: 0 -15px;
+        border-radius: 12px;
+        transform: translateX(5px);
+      }
+
+      .spec-label {
+        color: #000000;
+        font-size: 14px;
+        font-weight: 400;
+        flex: 1;
+      }
+
+      .spec-value {
+        color: #1d1d1f;
+        font-weight: 600;
+        font-size: 14px;
+        text-align: right;
+        flex: 1;
+      }
+
+      .price-tag {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        color: #ff416c;
+        padding: 10px 18px;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        opacity: 0;
+        transform: scale(0.5) rotate(10deg);
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transition-delay: 0.3s;
+      }
+
+      .car-card:hover .price-tag {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+
+      .details-btn {
+        position: absolute;
+        bottom: 30px;
+        left: 20%;
+        transform: translateX(-50%) translateY(40px);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 15px 35px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        opacity: 0;
+        transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .details-btn ::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .details-btn:hover::before {
+        left: 100%;
+      }
+
+      .car-card:hover .details-btn {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .details-btn:hover {
+        transform: translateX(-50%) translateY(-3px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+      }
+
+      .glass-reflection {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 100%
+        );
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .car-card:hover .glass-reflection {
+        opacity: 1;
+      }
+
+      .magnetic-field {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 2px solid rgba(102, 126, 234, 0.1);
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        animation: magneticPulse 3s ease-in-out infinite;
+      }
+
+      .car-card:hover .magnetic-field {
+        opacity: 1;
+      }
+
+      @keyframes magneticPulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(0.8);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.2);
+          opacity: 0.1;
+        }
+      }
+      .wave img {
+        width: 100%;
+        height: 300px;
+        background-color: #000;
+      }
+      footer {
+        padding: 100px 100px;
+      }
+      .footer-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+        background-color: #fff;
+        color: #000;
+        margin-bottom: 50px;
+        gap: 60px;
+        text-align: start;
+      }
+      .footer5 img {
+        width: 100px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+      .footer5 p {
+        color: rgba(0, 0, 0, 0.726);
+        font-size: 18px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+      }
+      .footer4 p {
+        color: rgba(0, 0, 0, 0.726);
+        font-size: 18px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+      }
+      .footer-container h3 {
+        text-transform: uppercase;
+        color: #000;
+        font-size: 22px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 600;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+      }
+      .footer-container h3:hover {
+        color: #b70826;
+      }
+      .footer-container nav ul {
+        padding-left: 0%;
+      }
+      .footer-container nav ul li {
+        list-style: none;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+      .footer-container nav ul li:hover {
+        color: rgba(192, 7, 7, 0.67);
+        text-decoration: underline;
+      }
+      .footer4 button {
+        padding: 10px 110px;
+        background-color: #000;
+        color: #fff;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 20px;
+      }
+      .footer-info {
+        display: grid;
+        grid-template-columns: 2fr 4fr 2fr;
+        text-align: start;
+        gap: 60px;
+      }
+      .footer-info p {
+        color: rgba(0, 0, 0, 0.788);
+        font-size: 18px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      .social-media .links {
+        display: flex;
+        gap: 60px;
+        margin-top: 10px;
+        align-items: center;
+        justify-content: center;
+      }
+      .social-media .links i {
+        border-radius: 50%;
+        background-color: black;
+        color: white;
+        font-size: 20px;
+        padding: 10px 10px;
+      }
+      .social-media .links:hover {
+        color: #00000055;
+      }
+      .country h5 {
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="navbar">
+      <div class="header-container">
+        <div class="hamburg">
+          <div class="menu">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+          <aside>
+            <nav>
+              <ul>
+                <li><a href="car.html">Home</a></li>
+                <li>
+                  <div class="menu-container">
+                    <button class="cars-button" onclick="toggleDropdown()">
+                      CARS <span id="arrow">+</span>
+                    </button>
+
+                    <div id="dropdown" class="dropdown">
+                      <span class="close-icon" onclick="closeDropdown()"
+                        >×</span
+                      >
+                      <div class="dropdown-header">CARS</div>
+                      <a href="#">SUPERCARS</a>
+                      <a href="#">TUNING</a>
+                      <a href="#">CARS FOR SALE</a>
+                      <a href="classic.html">CLASSICS</a>
+                      <a href="#">ARMORING</a>
+                    </div>
+                  </div>
+                </li>
+                <li><a href="smart.html">Boats</a></li>
+                <li><a href="island.html">BRABUS Island</a></li>
+                <li><a href="collection.html">Collection 25</a></li>
+                <li><a href="motar.html">Motorhomes</a></li>
+                <li><a href="fashion.html">Fashion</a></li>
+                <li><a href="sales.html">Collaborations</a></li>
+                <li>
+                  <a href="https://sonnet.titan.in/#/login">Brand</a>
+                </li>
+                <li>
+                  <a href="https://www.titan.co.in/titan-grandmaster?lang=en_IN"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </nav>
+            <div class="close">
+              <i class="fa-solid fa-x"></i>
+            </div>
+          </aside>
+        </div>
+        <div class="logo">
+          <img src="asset/logo/babus.svg" alt="" />
+        </div>
+        <div class="icons">
+          <div class="topbar">
+            <button class="icon-btn" onclick="openPanel()">
+              <i class="fa-solid fa-globe"></i>
+            </button>
+          </div>
+
+          <!-- Right slider panel -->
+          <div id="rightPanel" class="slider-panel">
+            <div class="slider-icons">
+              <div class="slider-global">
+                <i class="fa-solid fa-globe"></i>
+              </div>
+              <div class="slider-user">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div class="slider-shop">
+                <i class="fa fa-bag-shopping"></i>
+              </div>
+              <div class="slider-close">
+                <span class="close-btn" onclick="closePanel()">×</span>
+              </div>
+            </div>
+            <h2>
+              WELCOME TO <br />
+              BRABUS.COM
+            </h2>
+            <p>
+              Please select the website that fits your profile. We deliver
+              worldwide. In the following countries there is an online shop
+              available.
+            </p>
+            <div class="info1">🛈 Your shopping cart will be cleared</div>
+            <div class="note">
+              If you switch countries, items in your shopping cart will be
+              removed, as not all products are available in all countries.
+            </div>
+
+            <div class="dropdown-container">
+              <div
+                class="dropdown-selected"
+                onclick="toggleCountryDropdown()"
+                id="selected-country"
+              >
+                <i class="fa-solid fa-globe"></i> Choose Country
+              </div>
+              <div class="dropdown-list" id="dropdown-country">
+                <!-- Country Options -->
+              </div>
+            </div>
+
+            <div class="other-countries">ALL OTHER COUNTRIES:</div>
+            <a href="car.html" class="global-btn">GLOBAL SITE (EN)</a>
+          </div>
+
+          <div class="icon">
+            <i class="fa-solid fa-user"></i>
+          </div>
+
+          <i class="fa fa-bag-shopping" onclick="openCart()"></i>
+
+          <div class="cart-panel" id="cartPanel">
+            <div class="cart-header">
+              <i class="fa fa-globe"></i>
+              <i class="fa fa-user"></i>
+              <i class="fa fa-xmark" onclick="closeCart()"></i>
+            </div>
+            <div class="cart-body">
+              <a href="https://checkout.brabus.com/en/checkout/cart"
+                ><button class="cart-btn cart-grey">TO THE CART</button></a
+              >
+              <a href="https://checkout.brabus.com/en/checkout/cart"
+                ><button class="cart-btn cart-black">TO CHECKOUT</button></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="header-vd">
+      <div class="header-video">
+        <video
+          src="asset/video/classic.mp4"
+          controls
+          loop
+          autoplay
+          muted
+          class="d-block w-100"
+          alt="..."
+        ></video>
+      </div>
+    </section>
+    <section id="classic-info">
+      <div class="classic-in">
+        <h3 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          Classics
+        </h3>
+        <h5 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          <span>Brabus Classic</span>– 6 Star restoration
+        </h5>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          Thousands of hours of work, the expertise of more than 45 years of
+          Mercedes-Benz experience and unconditional attention to detail: this
+          is what characterizes a BRABUS Classic 6-star restoration. This is how
+          historically authentic automotive works of art are created - in a
+          quality as if the classic car had just rolled off the production line.
+          A genuine investment with an incomparable fun factor.
+        </p>
+      </div>
+    </section>
+    <section id="dream">
+      <div class="dream-car">
+        <div
+          class="dream-info"
+          data-aos="fade-right"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <h2>Selected Dream cars</h2>
+          <p>
+            We offer our customers worldwide dreams on wheels. From extremely
+            rare sports cars to uncompromisingly restored Mercedes-Benz classics
+            in BRABUS 6-star quality -
+            <a href="#icons-meets"><span>BRABUS Dreams for Sale!</span></a>
+            <br />
+            <br />
+            <br />Take a journey back in time to past eras and discover our
+            highlights.
+          </p>
+        </div>
+        <div
+          class="dream-photo"
+          data-aos="fade-left"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/bestcar2.webp" alt="" />
+        </div>
+      </div>
+    </section>
+    <section id="official">
+      <div class="official-brabus">
+        <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          Official Mercedes-Benz ClassicPartner
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          The starting point for every 6-star restoration of a Mercedes-Benz
+          Classic is always the complete dismantling of the base vehicle in our
+          workshop. All brparts are inspected and cataloged. Unusable components
+          are sorted out.
+          <br />
+          <br />
+          As an official ClassicPartner, we guarantee a true-to-original
+          restoration and offer the full range of workshop and restoration
+          services for our customers.
+        </p>
+        <a
+          href="https://www.brabus.com/en-int/cars/classics/mercedes-benz-classic-partner.html"
+        >
+          <button
+            data-aos="fade-up"
+            data-aos-delay="300"
+            data-aos-duration="1000"
+          >
+            Discover Now
+          </button></a
+        >
+      </div>
+    </section>
+    <section id="restoration">
+      <div class="restor">
+        <div
+          class="restor1"
+          data-aos="fade-right"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/Restoration1.webp" alt="" />
+          <div class="rest-info">
+            <h2>Restoration <br />PRogram</h2>
+            <a
+              href="https://www.brabus.com/en-int/cars/classics/w-198-roadster-1.html"
+            >
+              <button>300 SL Roadster</button></a
+            >
+          </div>
+        </div>
+        <div
+          class="restor2"
+          data-aos="fade-left"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/Restoration2.webp" alt="" />
+          <div class="rest-info2">
+            <h2>Restoration <br />PRogram</h2>
+            <a
+              href="https://www.brabus.com/en-int/cars/classics/w-111-280cabriolet.html"
+            >
+              <button>280 SE 3.5 Cabriolet</button></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="craft">
+      <div class="car-craft">
+        <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          <span>For the love</span> of craft
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          The beauty is brought back to life with the utmost precision and
+          conscientious dedication: from complete chemical paint stripping to
+          careful engine and gearbox overhaul, from elaborate interior
+          renovation, cathodic dip coating of the bodywork as in modern
+          production vehicles and comprehensive rust prevention to the final
+          paint job. Once all the work steps have been completed, the classic
+          Mercedes shines again in its former glory.
+        </p>
+      </div>
+    </section>
+    <section id="grade">
+      <div class="grade1">
+        <div
+          class="grade-car"
+          data-aos="fade-right"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <h2>Grade 1+</h2>
+          <p>
+            After the completed BRABUS Classic 6-star restoration, the leading
+            classic car expert organization Classic Data rates the vehicle with
+            the grade 1+ certificate. The vehicle receives the additional
+            certificate "New Car Character" for the unique quality and fidelity
+            to the original work: The car is like new - the 6-star restoration
+            exceeds the original factory delivery condition in terms of quality
+            of workmanship and rust prevention. A classic that can only be found
+            in this quality at BRABUS Classic.
+          </p>
+        </div>
+        <div
+          class="grade-car-image"
+          data-aos="fade-left"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/grade1.webp" alt="" />
+        </div>
+      </div>
+    </section>
+    <section id="highlights">
+      <div class="highlight-model">
+        <div
+          class="model-image"
+          data-aos="fade-right"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/models.jpg" alt="" />
+        </div>
+        <div
+          class="model-info"
+          data-aos="fade-left"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <h2>Highlight Models</h2>
+          <p>
+            The three highlight models include the Mercedes-Benz 280 SL Pagoda,
+            the Mercedes-Benz 280 SE 3.5 Cabriolet and the Mercedes-Benz 300 SL
+            Roadster. <br />
+            <br />
+            Regardless of the model, you can contact our BRABUS Classic experts
+            - we will take care of your request.
+          </p>
+          <button>Contact Us</button>
+        </div>
+      </div>
+    </section>
+    <section
+      id="icons-meets"
+      data-aos="fade-up"
+      data-aos-delay="300"
+      data-aos-duration="1000"
+    >
+      <div class="icons-image">
+        <img src="asset/images/icons meet.webp" alt="" />
+        <div class="icons-info">
+          <h2>ICON MEETS ICON</h2>
+          <p>The Andy Warhol Story</p>
+          <a
+            href="https://www.brabus.com/en-int/cars/classics/300-sl-gullwing-warhol.html"
+          >
+            <button>300 SL GULLWING</button></a
+          >
+        </div>
+      </div>
+    </section>
+    <section id="sales">
+      <div class="sales1">
+        <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          Dreams for sale
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          Our Dreams for Sale embody passion, individuality and perfection to
+          the last detail.
+        </p>
+      </div>
+      <div
+        class="car-hover"
+        data-aos="fade-up"
+        data-aos-delay="300"
+        data-aos-duration="1000"
+      >
+        <div class="car-card">
+          <div class="glass-reflection"></div>
+          <div class="magnetic-field"></div>
+
+          <div class="car-image">
+            <div class="floating-particles">
+              <img src="asset/images/sale1.webp" alt="" />
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+            </div>
+            <div class="price-tag">Price on Request</div>
+          </div>
+
+          <div class="car-info">
+            <h2 class="car-title">MERCEDES-BENZ 300 SL GULLWING</h2>
+            <p class="car-category">Classic Vehicles</p>
+
+            <div class="car-specs">
+              <div class="spec-row">
+                <span class="spec-label">Mileage</span>
+                <span class="spec-value">0 km (after restoration)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">2,996 cm³</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">158 kW / 215 hp</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">260 km/h / 162 mph</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Location</span>
+                <span class="spec-value">Germany</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">ID</span>
+                <span class="spec-value">C4S_278C</span>
+              </div>
+            </div>
+            <a href="https://www.brabus.com/en-int/cars/classics/C4S339C.html">
+              <button class="details-btn">Details</button></a
+            >
+          </div>
+        </div>
+        <div class="car-card">
+          <div class="glass-reflection"></div>
+          <div class="magnetic-field"></div>
+
+          <div class="car-image">
+            <div class="floating-particles">
+              <img src="asset/images/sale2.webp" alt="" />
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+            </div>
+            <div class="price-tag">Price on Request</div>
+          </div>
+
+          <div class="car-info">
+            <h2 class="car-title">Mercedes-Benz 300 SL Roadster</h2>
+            <p class="car-category">Classic Vehicles</p>
+
+            <div class="car-specs">
+              <div class="spec-row">
+                <span class="spec-label">Mileage</span>
+                <span class="spec-value">0 km (after restoration)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">2,996 cm³</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">124 kW / 136 hp</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">220 km/h / 162 mph</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Location</span>
+                <span class="spec-value">Germany</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">ID</span>
+                <span class="spec-value">C4S_278C</span>
+              </div>
+            </div>
+            <a href="https://www.brabus.com/en-int/cars/classics/C4S192C.html">
+              <button class="details-btn">Details</button></a
+            >
+          </div>
+        </div>
+        <div class="car-card">
+          <div class="glass-reflection"></div>
+          <div class="magnetic-field"></div>
+
+          <div class="car-image">
+            <div class="floating-particles">
+              <img src="asset/images/sale3.webp" alt="" />
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+            </div>
+            <div class="price-tag">Price on Request</div>
+          </div>
+
+          <div class="car-info">
+            <h2 class="car-title">Mercedes-Benz 300 SL Roadster</h2>
+            <p class="car-category">Classic Vehicles</p>
+
+            <div class="car-specs">
+              <div class="spec-row">
+                <span class="spec-label">Mileage</span>
+                <span class="spec-value">0 km (after restoration)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">2,996 cm³</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">158 kW / 215 hp</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">220 km/h / 132 mph</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Location</span>
+                <span class="spec-value">Germany</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">ID</span>
+                <span class="spec-value">C4S_278C</span>
+              </div>
+            </div>
+            <a href="https://www.brabus.com/en-int/cars/classics/C4S191C.html">
+              <button class="details-btn">Details</button></a
+            >
+          </div>
+        </div>
+        <div class="car-card">
+          <div class="glass-reflection"></div>
+          <div class="magnetic-field"></div>
+
+          <div class="car-image">
+            <div class="floating-particles">
+              <img src="asset/images/sale4.webp" alt="" />
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+            </div>
+            <div class="price-tag">Price on Request</div>
+          </div>
+
+          <div class="car-info">
+            <h2 class="car-title">Mercedes-Benz 300 SL Roadster</h2>
+            <p class="car-category">Classic Vehicles</p>
+
+            <div class="car-specs">
+              <div class="spec-row">
+                <span class="spec-label">Mileage</span>
+                <span class="spec-value">0 km (after restoration)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">2,996 cm³</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">158 kW / 215 hp</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">220 km/h / 136 mph</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Location</span>
+                <span class="spec-value">Germany</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">ID</span>
+                <span class="spec-value">C4S_278C</span>
+              </div>
+            </div>
+            <a href="https://www.brabus.com/en-int/cars/classics/C4S339C.html">
+              <button class="details-btn">Details</button></a
+            >
+          </div>
+        </div>
+        <div class="car-card">
+          <div class="glass-reflection"></div>
+          <div class="magnetic-field"></div>
+
+          <div class="car-image">
+            <div class="floating-particles">
+              <img src="asset/images/sale5.webp" alt="" />
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+            </div>
+            <div class="price-tag">Price on Request</div>
+          </div>
+
+          <div class="car-info">
+            <h2 class="car-title">Mercedes-Benz 280 SE 3.5 Cabriolet</h2>
+            <p class="car-category">Classic Vehicles</p>
+
+            <div class="car-specs">
+              <div class="spec-row">
+                <span class="spec-label">Mileage</span>
+                <span class="spec-value">0 km (after restoration)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">2,996 cm³</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">158 kW / 215 hp</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">200 km/h / 125 mph</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Location</span>
+                <span class="spec-value">Germany</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">ID</span>
+                <span class="spec-value">C4S_278C</span>
+              </div>
+            </div>
+            <a href="https://www.brabus.com/en-int/cars/classics/C4S254C.html">
+              <button class="details-btn">Details</button></a
+            >
+          </div>
+        </div>
+        <div class="car-card">
+          <div class="glass-reflection"></div>
+          <div class="magnetic-field"></div>
+
+          <div class="car-image">
+            <div class="floating-particles">
+              <img src="asset/images/sale6.jpg" alt="" />
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+            </div>
+            <div class="price-tag">Price on Request</div>
+          </div>
+
+          <div class="car-info">
+            <h2 class="car-title">Mercedes-Benz 280 SE 3.5 Cabriolet</h2>
+            <p class="car-category">Classic Vehicles</p>
+
+            <div class="car-specs">
+              <div class="spec-row">
+                <span class="spec-label">Mileage</span>
+                <span class="spec-value">0 km (after restoration)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">2,996 cm³</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">158 kW / 215 hp</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">205 km/h / 162 mph</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Location</span>
+                <span class="spec-value">Germany</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">ID</span>
+                <span class="spec-value">C4S_278C</span>
+              </div>
+            </div>
+            <a href="https://www.brabus.com/en-int/cars/classics/C4S054CC.html"
+              ><button class="details-btn">Details</button></a
+            >
+          </div>
+        </div>
+        <div class="car-card">
+          <div class="glass-reflection"></div>
+          <div class="magnetic-field"></div>
+
+          <div class="car-image">
+            <div class="floating-particles">
+              <img src="asset/images/sale7.jpg" alt="" />
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+            </div>
+            <div class="price-tag">Price on Request</div>
+          </div>
+
+          <div class="car-info">
+            <h2 class="car-title">Mercedes-Benz 280 SL Pagoda</h2>
+            <p class="car-category">Classic Vehicles</p>
+
+            <div class="car-specs">
+              <div class="spec-row">
+                <span class="spec-label">Mileage</span>
+                <span class="spec-value">0 km (after restoration)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">2,996 cm³</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">158 kW / 215 hp</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">200 km/h / 125 mph</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Location</span>
+                <span class="spec-value">Germany</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">ID</span>
+                <span class="spec-value">C4S_278C</span>
+              </div>
+            </div>
+            <a href="https://www.brabus.com/en-int/cars/classics/C4S132C.html">
+              <button class="details-btn">Details</button></a
+            >
+          </div>
+        </div>
+        <div class="car-card">
+          <div class="glass-reflection"></div>
+          <div class="magnetic-field"></div>
+
+          <div class="car-image">
+            <div class="floating-particles">
+              <img src="asset/images/sale8.jpg" alt="" />
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+            </div>
+            <div class="price-tag">Price on Request</div>
+          </div>
+
+          <div class="car-info">
+            <h2 class="car-title">Mercedes-Benz 280 SL Pagoda</h2>
+            <p class="car-category">Classic Vehicles</p>
+
+            <div class="car-specs">
+              <div class="spec-row">
+                <span class="spec-label">Mileage</span>
+                <span class="spec-value">0 km (after restoration)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">2,996 cm³</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">158 kW / 215 hp</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">200 km/h / 124 mph</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Location</span>
+                <span class="spec-value">Germany</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">ID</span>
+                <span class="spec-value">C4S_278C</span>
+              </div>
+            </div>
+            <a href="https://www.brabus.com/en-int/cars/classics/C4S129C.html">
+              <button class="details-btn">Details</button></a
+            >
+          </div>
+        </div>
+        <div class="car-card">
+          <div class="glass-reflection"></div>
+          <div class="magnetic-field"></div>
+
+          <div class="car-image">
+            <div class="floating-particles">
+              <img src="asset/images/sale9.jpg" alt="" />
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+              <div class="particle"></div>
+            </div>
+            <div class="price-tag">Price on Request</div>
+          </div>
+
+          <div class="car-info">
+            <h2 class="car-title">Mercedes-Benz 280 SL Pagoda</h2>
+            <p class="car-category">Classic Vehicles</p>
+
+            <div class="car-specs">
+              <div class="spec-row">
+                <span class="spec-label">Mileage</span>
+                <span class="spec-value">0 km (after restoration)</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Engine</span>
+                <span class="spec-value">2,996 cm³</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Power</span>
+                <span class="spec-value">158 kW / 215 hp</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Top Speed</span>
+                <span class="spec-value">200 km/h / 125 mph</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">Location</span>
+                <span class="spec-value">Germany</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">ID</span>
+                <span class="spec-value">C4S_278C</span>
+              </div>
+            </div>
+            <a href="https://www.brabus.com/en-int/cars/classics/C4S061C.html">
+              <button class="details-btn">Details</button></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="wave">
+      <img src="asset/images/wave2.avif" alt="" />
+    </div>
+    <footer data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+      <div class="footer-container">
+        <div class="footer5">
+          <img src="asset/logo/babus.svg" alt="" />
+          <p>
+            We create modern, individual luxury by developing <br />
+            products with a wow factor that put our <br />
+            customers in the spotlight.
+          </p>
+        </div>
+        <div class="footer1">
+          <h3>Discover</h3>
+          <nav>
+            <ul>
+              <li>Tuning shop</li>
+              <li>Fashion shop</li>
+              <li>Cars4Sale</li>
+              <li>Who we are</li>
+              <li>Career</li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer2">
+          <h3>Get in Touch</h3>
+          <nav>
+            <ul>
+              <li>Find a dealer</li>
+              <li>Contact</li>
+              <li>Revocation & Claim</li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer3">
+          <h3>Information</h3>
+          <nav>
+            <ul>
+              <li>Imprint</li>
+              <li>Terms</li>
+
+              <li>Privacy policy</li>
+              <li>Cookie settings</li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer4">
+          <h3>Newsletter</h3>
+          <p>
+            Be part of the BRABUS community and subscribe <br />
+            to the newsletter now!
+          </p>
+          <button>NEWSLETTER</button>
+        </div>
+      </div>
+      <div class="footer-info">
+        <div class="copyright">
+          <p>© — BRABUS 2017–2025</p>
+        </div>
+        <div class="country">
+          <p>Country-/Language version</p>
+          <h5><i class="fa-solid fa-globe"></i> International - English</h5>
+        </div>
+        <div class="social-media">
+          <p>Social media</p>
+          <div class="links">
+            <div class="insta1"><i class="fa-brands fa-instagram"></i></div>
+            <div class="inkdine1"><i class="fa-brands fa-linkedin"></i></div>
+            <div class="facebook1"><i class="fa-brands fa-facebook-f"></i></div>
+            <div class="youtube1"><i class="fa-brands fa-youtube"></i></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+      Delay = 1000;
+    </script>
+    <script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById("dropdown");
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
+      }
+
+      function closeDropdown() {
+        document.getElementById("dropdown").style.display = "none";
+      }
+
+      // Optional: Click outside to close
+      document.addEventListener("click", function (event) {
+        var dropdown = document.getElementById("dropdown");
+        var button = document.querySelector(".cars-button");
+        if (
+          !dropdown.contains(event.target) &&
+          !button.contains(event.target)
+        ) {
+          dropdown.style.display = "none";
+        }
+      });
+    </script>
+
+    <script>
+      let ham = document.querySelector(".menu");
+      let aside = document.querySelector("aside");
+      ham.addEventListener("click", function () {
+        aside.style.transform = "translateX(0px)";
+      });
+      let close = document.querySelector(".close");
+      close.addEventListener("click", function () {
+        aside.style.transform = "translateX(-300px)";
+      });
+    </script>
+    <script>
+      function openPanel() {
+        document.getElementById("rightPanel").classList.add("open");
+      }
+
+      function closePanel() {
+        document.getElementById("rightPanel").classList.remove("open");
+      }
+
+      // Optional: close on outside click
+      document.addEventListener("click", function (e) {
+        const panel = document.getElementById("rightPanel");
+        const icon = document.querySelector(".icon-btn");
+        if (!panel.contains(e.target) && !icon.contains(e.target)) {
+          panel.classList.remove("open");
+        }
+      });
+    </script>
+    <script>
+      function openCart() {
+        document.getElementById("cartPanel").style.right = "0";
+      }
+
+      function closeCart() {
+        document.getElementById("cartPanel").style.right = "-100%";
+      }
+    </script>
+    <script>
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+    </script>
+    <script>
+      const countries = [
+        { name: "India", code: "in" },
+        { name: "United States", code: "us" },
+        { name: "United Kingdom", code: "gb" },
+        { name: "Germany", code: "de" },
+        { name: "France", code: "fr" },
+        { name: "Canada", code: "ca" },
+        { name: "Australia", code: "au" },
+        { name: "Japan", code: "jp" },
+        { name: "Brazil", code: "br" },
+        { name: "South Africa", code: "za" },
+      ];
+
+      const dropdownCountry = document.getElementById("dropdown-country");
+      const selectedCountry = document.getElementById("selected-country");
+
+      function toggleCountryDropdown() {
+        dropdownCountry.style.display =
+          dropdownCountry.style.display === "block" ? "none" : "block";
+      }
+
+      function selectCountry(name, code) {
+        selectedCountry.innerHTML = `<img src="https://flagcdn.com/w20/${code}.png"> ${name}`;
+        dropdownCountry.style.display = "none";
+      }
+
+      countries.forEach((country) => {
+        const item = document.createElement("div");
+        item.className = "dropdown-item";
+        item.innerHTML = `<img src="https://flagcdn.com/w20/${country.code}.png"> ${country.name}`;
+        item.onclick = () => selectCountry(country.name, country.code);
+        dropdownCountry.appendChild(item);
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest(".dropdown-container")) {
+          dropdownCountry.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

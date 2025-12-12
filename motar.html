@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"
+      integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css"
+      integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- AOS CSS -->
+    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0%;
+        padding: 0%;
+      }
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+        /* overflow-y: hidden;  */
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 9;
+        background: #fff;
+      }
+
+      .header-container {
+        display: grid;
+        grid-template-columns: 2fr 7fr 3fr;
+        gap: 40px;
+        padding: 20px 30px;
+        text-align: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .menu {
+        font-size: 35px;
+      }
+
+      .icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        font-size: 30px;
+      }
+      .hamburg aside ul {
+        list-style: none;
+        font-family: "Sansation", sans-serif;
+        text-transform: uppercase;
+        text-align: start;
+      }
+
+      .hamburg aside {
+        display: block;
+        transition: all 0.6 ease-in-out;
+        transform: translateX(-300px);
+        position: absolute;
+        left: 0%;
+        top: 0%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        width: 300px;
+        height: 100vh;
+      }
+      .hamburg aside nav ul li a {
+        color: #000000;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 20px;
+        font-weight: 650;
+        text-decoration: none;
+      }
+      .hamburg aside nav ul li {
+        margin-bottom: 20px;
+      }
+      .hamburg aside nav ul li :hover {
+        color: purple;
+      }
+      .hamburg .close {
+        color: #000000;
+        position: absolute;
+        top: 60px;
+        right: 40px;
+      }
+      .hamburg .close i {
+        font-size: 30px;
+      }
+      .menu-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .cars-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #000000;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 20px;
+        font-weight: 650;
+        text-decoration: none;
+      }
+
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        width: 220px;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        z-index: 100;
+      }
+
+      .dropdown a {
+        display: block;
+        padding: 12px 16px;
+        color: #000;
+        text-decoration: none;
+        border-bottom: 1px solid #eee;
+      }
+
+      .dropdown a:hover {
+        background-color: #f5f5f5;
+      }
+
+      .close-icon {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        font-size: 20px;
+        color: #888;
+        cursor: pointer;
+      }
+
+      .dropdown-header {
+        font-weight: bold;
+        padding: 12px 16px 4px;
+      }
+
+      #arrow {
+        position: absolute;
+        top: 0px;
+        left: 100px;
+      }
+
+      .icon-btn {
+        background: none;
+        border: none;
+        font-size: 26px;
+        cursor: pointer;
+      }
+
+      /* Full-height right slider panel */
+      .slider-panel {
+        height: 100vh;
+        width: 350px;
+        position: fixed;
+        top: 0;
+        right: -350px;
+        background-color: #fff;
+        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+        transition: right 0.4s ease;
+        z-index: 1000;
+        padding: 24px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        padding: 30px 70px;
+      }
+      .slider-icons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .slider-panel.open {
+        right: 0;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        font-size: 45px;
+        font-weight: bold;
+        color: #444;
+        cursor: pointer;
+      }
+
+      .slider-panel h2 {
+        margin-top: 40px;
+        font-size: 25px;
+        text-align: start;
+      }
+      .slider-panel p {
+        margin-top: 20px;
+        font-size: 16px;
+        text-align: start;
+        color: #00000081;
+      }
+      .info1 {
+        color: teal;
+        font-weight: 400;
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: start;
+      }
+
+      .note {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        text-align: start;
+        color: #00000081;
+      }
+
+      .dropdown-container {
+        width: 200px;
+        position: relative;
+      }
+
+      .dropdown-selected {
+        padding: 8px 10px;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 18px;
+      }
+
+      .dropdown-selected:after {
+        content: "▼";
+        font-size: 14px;
+        margin-left: 10px;
+        color: #777;
+      }
+
+      .dropdown-list {
+        position: absolute;
+        top: 110%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        max-height: 250px;
+        overflow-y: auto;
+        z-index: 100;
+        display: none;
+      }
+
+      .dropdown-item {
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      .dropdown-item img {
+        width: 20px;
+        height: 14px;
+        margin-right: 10px;
+        object-fit: cover;
+      }
+
+      .dropdown-item:hover {
+        background-color: #f0f0f0;
+      }
+      .other-countries {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: start;
+      }
+      .global-btn:hover {
+        background-color: #b70826;
+        color: white;
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      .global-btn {
+        background-color: black;
+        color: white;
+        padding: 12px;
+        text-align: center;
+        font-weight: 400;
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        font-size: 20px;
+      }
+      .info {
+        font-size: 14px;
+        color: #222;
+        margin-top: 16px;
+      }
+
+      .info-box {
+        background-color: #f0fbfc;
+        border-left: 4px solid #58b3c0;
+        padding: 12px 14px;
+        margin-top: 20px;
+        color: #2b727a;
+        font-size: 14px;
+      }
+
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        z-index: 1000;
+        background-color: transparent;
+      }
+
+      header.scrolled {
+        background-color: white;
+        box-shadow: 0 0 14px 6px #898787;
+        /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+      }
+      .cart-panel {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 300px;
+        background-color: white;
+        z-index: 9999;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      /* Header with icons */
+      .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 30px;
+        margin-bottom: 40px;
+      }
+
+      /* Buttons */
+      .cart-body .cart-btn {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 20px;
+        font-size: 25px;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 1px;
+        font-weight: 500;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .cart-grey {
+        background-color: #999;
+        color: black;
+      }
+      .cart-black {
+        background-color: black;
+        color: white;
+      }
+      .cart-grey:hover {
+        background-color: #b70826;
+        transition: all 2s ease-in-out;
+        transform: scale(1.1);
+      }
+      .cart-black:hover {
+        background-color: #b70826;
+        transition: all 2s ease-in-out;
+        transform: scale(1.1);
+      }
+      #fullscreen-video video {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+      }
+      #moto-info {
+        padding: 100px 250px;
+        background-color: whitesmoke;
+      }
+      .brabus-big-boy {
+        text-align: center;
+      }
+      .brabus-big-boy h2 {
+        font-size: 40px;
+        font-weight: 600;
+        margin-bottom: 60px;
+      }
+      h2:hover {
+        color: #b70826;
+      }
+      .brabus-big-boy p {
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        line-height: 1cm;
+        word-spacing: 1px;
+        text-align: start;
+      }
+      .brabus-big-boy span {
+        font-size: 25px;
+        font-weight: 550;
+        margin-bottom: 30px;
+      }
+      .brabus-big-boy span:hover {
+        color: #b70826;
+      }
+      .motor1 img {
+        width: 100%;
+        height: 100%;
+      }
+      #luxury {
+        padding: 100px 250px;
+        background-color: whitesmoke;
+      }
+      .luxury1 {
+        text-align: center;
+      }
+      .luxury1 h2 {
+        font-size: 40px;
+        font-weight: 600;
+        margin-bottom: 60px;
+      }
+      .luxury1 p {
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        line-height: 1cm;
+        word-spacing: 1px;
+        text-align: start;
+      }
+      .slider1 swiper-container {
+        width: 100%;
+        height: 100%;
+      }
+
+      .slider1 swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #444;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .slider1 swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      #mousewhell {
+        padding: 50px 50px;
+      }
+      .slider1 swiper-container {
+        width: 100%;
+        height: 100%;
+      }
+
+      .slider1 swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #444;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .slider1 swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      #mousewhell1 {
+        padding: 10px 200px;
+      }
+      #accord {
+        padding: 100px 200px;
+        width: 100%;
+        height: 100%;
+      }
+      .accordian {
+        width: 600px;
+        margin: 300px auto;
+      }
+      .accordian-btn {
+        border: none;
+        width: 100%;
+        text-align: left;
+        font-size: 20px;
+        font-weight: 500;
+        padding: 10px 20px;
+        text-transform: uppercase;
+      }
+
+      .dropdown-header .accordian-content {
+        max-height: 0;
+        overflow: hidden;
+      }
+      .dropdown-header {
+        border-bottom: 1px solid #111;
+      }
+      .dropdown-header.active .accordian-content {
+        padding: 15px 20px;
+        max-height: max-content;
+        transition: all 0.5s ease-in-out;
+      }
+      .dropdown-header.active i {
+        transform: rotate(180deg);
+      }
+      .accordian-btn {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .dropdown-container {
+        width: 100%;
+      }
+
+      .dropdown-header {
+        background-color: #000;
+        color: #fff;
+        padding: 20px 30px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .dropdown-content {
+        display: block; /* set to block for now while developing */
+        padding: 40px 60px;
+        width: 100%;
+      }
+
+      .grid-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        width: 100%;
+      }
+
+      .section {
+        margin-bottom: 40px;
+      }
+
+      .section-title {
+        font-size: 20px;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+
+      .subsection-title {
+        font-weight: bold;
+        font-size: 16px;
+        margin: 20px 0 10px;
+      }
+
+      .spec-list {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      .spec-list tr {
+        border-bottom: 1px solid #ccc;
+      }
+
+      .spec-list td {
+        padding: 8px 0;
+        font-size: 15px;
+      }
+
+      .spec-list td:first-child {
+        font-weight: bold;
+        width: 40%;
+      }
+
+      .spec-list td[colspan="2"] {
+        font-weight: normal;
+      }
+      #last {
+        padding: 50px 200px;
+        text-align: center;
+        background-color: #000;
+        color: #fff;
+      }
+
+      .last-info h2 {
+        margin-top: 50px;
+        font-size: 50px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-family: "Rajdhani", sans-serif;
+        margin-bottom: 80px;
+        color: #fffefe;
+        text-align: center;
+      }
+      .last-info h2:hover {
+        color: #b70826;
+      }
+      .last-info button {
+        padding: 10px 30px;
+        background-color: #fffdfd;
+        color: #000000;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 80px;
+        text-align: center;
+        font-size: 20px;
+        box-shadow: 0 0 14px 6px #898787;
+      }
+
+      .last-info button:hover {
+        background-color: #b70826;
+        color: rgb(0, 0, 0);
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      .wave img {
+        width: 100%;
+        height: 300px;
+        background-color: #3a3a3a;
+      }
+      footer {
+        padding: 100px 100px;
+      }
+      .footer-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+        background-color: #fff;
+        color: #000;
+        margin-bottom: 50px;
+        gap: 60px;
+        text-align: start;
+      }
+      .footer5 img {
+        width: 100px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+      .footer5 p {
+        color: rgba(0, 0, 0, 0.726);
+        font-size: 18px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+      }
+      .footer4 p {
+        color: rgba(0, 0, 0, 0.726);
+        font-size: 18px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+      }
+      .footer-container h3 {
+        text-transform: uppercase;
+        color: #000;
+        font-size: 22px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 600;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+      }
+      .footer-container h3:hover {
+        color: #b70826;
+      }
+      .footer-container nav ul {
+        padding-left: 0%;
+      }
+      .footer-container nav ul li {
+        list-style: none;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+      .footer-container nav ul li:hover {
+        color: rgba(192, 7, 7, 0.67);
+        text-decoration: underline;
+      }
+      .footer4 button {
+        padding: 10px 110px;
+        background-color: #000;
+        color: #fff;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 20px;
+      }
+      .footer-info {
+        display: grid;
+        grid-template-columns: 2fr 4fr 2fr;
+        text-align: start;
+        gap: 60px;
+      }
+      .footer-info p {
+        color: rgba(0, 0, 0, 0.788);
+        font-size: 18px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      .social-media .links {
+        display: flex;
+        gap: 60px;
+        margin-top: 10px;
+        align-items: center;
+        justify-content: center;
+      }
+      .social-media .links i {
+        border-radius: 50%;
+        background-color: black;
+        color: white;
+        font-size: 20px;
+        padding: 10px 10px;
+      }
+      .social-media .links:hover {
+        color: #00000055;
+      }
+      .country h5 {
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+      }
+      @media (max-width: 768px) {
+        .grid-layout {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="navbar">
+      <div class="header-container">
+        <div class="hamburg">
+          <div class="menu">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+          <aside>
+            <nav>
+              <ul>
+                <li><a href="car.html">Home</a></li>
+                <li>
+                  <div class="menu-container">
+                    <button class="cars-button" onclick="toggleDropdown()">
+                      CARS <span id="arrow">+</span>
+                    </button>
+
+                    <div id="dropdown" class="dropdown">
+                      <span class="close-icon" onclick="closeDropdown()"
+                        >×</span
+                      >
+                      <div class="dropdown-header">CARS</div>
+                      <a href="#">SUPERCARS</a>
+                      <a href="#">TUNING</a>
+                      <a href="#">CARS FOR SALE</a>
+                      <a href="classic.html">CLASSICS</a>
+                      <a href="#">ARMORING</a>
+                    </div>
+                  </div>
+                </li>
+                <li><a href="boat.html">Boats</a></li>
+                <li><a href="island.html">BRABUS Island</a></li>
+                <li><a href="collection.html">Collection 25</a></li>
+                <li><a href="motar.html">Motorhomes</a></li>
+                <li><a href="fashion.html">Fashion</a></li>
+                <li>
+                  <a
+                    href="https://www.brabus.com/en-int/coops/brabus-x-sunreef.html"
+                    >Collaborations</a
+                  >
+                </li>
+                <li>
+                  <a href="https://sonnet.titan.in/#/login">Brand</a>
+                </li>
+                <li>
+                  <a href="https://www.titan.co.in/titan-grandmaster?lang=en_IN"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </nav>
+            <div class="close">
+              <i class="fa-solid fa-x"></i>
+            </div>
+          </aside>
+        </div>
+        <div class="logo">
+          <img src="asset/logo/babus.svg" alt="" />
+        </div>
+        <div class="icons">
+          <div class="topbar">
+            <button class="icon-btn" onclick="openPanel()">
+              <i class="fa-solid fa-globe"></i>
+            </button>
+          </div>
+
+          <!-- Right slider panel -->
+          <div id="rightPanel" class="slider-panel">
+            <div class="slider-icons">
+              <div class="slider-global">
+                <i class="fa-solid fa-globe"></i>
+              </div>
+              <div class="slider-user">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div class="slider-shop">
+                <i class="fa fa-bag-shopping"></i>
+              </div>
+              <div class="slider-close">
+                <span class="close-btn" onclick="closePanel()">×</span>
+              </div>
+            </div>
+            <h2>
+              WELCOME TO <br />
+              BRABUS.COM
+            </h2>
+            <p>
+              Please select the website that fits your profile. We deliver
+              worldwide. In the following countries there is an online shop
+              available.
+            </p>
+            <div class="info1">🛈 Your shopping cart will be cleared</div>
+            <div class="note">
+              If you switch countries, items in your shopping cart will be
+              removed, as not all products are available in all countries.
+            </div>
+
+            <div class="dropdown-container">
+              <div
+                class="dropdown-selected"
+                onclick="toggleCountryDropdown()"
+                id="selected-country"
+              >
+                <i class="fa-solid fa-globe"></i> Choose Country
+              </div>
+              <div class="dropdown-list" id="dropdown-country">
+                <!-- Country Options -->
+              </div>
+            </div>
+
+            <div class="other-countries">ALL OTHER COUNTRIES:</div>
+            <a href="car.html" class="global-btn">GLOBAL SITE (EN)</a>
+          </div>
+
+          <div class="icon">
+            <i class="fa-solid fa-user"></i>
+          </div>
+
+          <i class="fa fa-bag-shopping" onclick="openCart()"></i>
+
+          <div class="cart-panel" id="cartPanel">
+            <div class="cart-header">
+              <i class="fa fa-globe"></i>
+              <i class="fa fa-user"></i>
+              <i class="fa fa-xmark" onclick="closeCart()"></i>
+            </div>
+            <div class="cart-body">
+              <a href="https://checkout.brabus.com/en/checkout/cart"
+                ><button class="cart-btn cart-grey">TO THE CART</button></a
+              >
+              <a href="https://checkout.brabus.com/en/checkout/cart"
+                ><button class="cart-btn cart-black">TO CHECKOUT</button></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="fullscreen-video">
+      <video
+        src="asset/video/motor.mp4"
+        autoplay
+        loop
+        muted
+        playsinline
+      ></video>
+    </section>
+    <section id="moto-info">
+      <div class="brabus-big-boy">
+        <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          BRABUS BIG BOY 1200
+        </h2>
+        <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          BUILT FOR THE JOURNEY - DESIGNED FOR LIVING
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          Introducing the first-ever BRABUS Masterpiece motorhome.
+        </p>
+        <br />
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          In over four decades, we have never shied away from a challenge—and
+          our latest entry into a new, unique product segment is no exception.
+          It’s big. It’s wide. And it takes you anywhere you want. It’s a new
+          type of Masterpiece, named after one of the biggest locomotives in the
+          world and born out of the idea to create a BRABUS luxury experience
+          that moves with you, that adapts to your personality and that quite
+          literally transforms ‘anywhere’ into ‘home’. Want to wake up to a new
+          horizon every day?
+        </p>
+        <br />
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          The <span>BRABUS BIG BOY 1200</span> has got you covered.
+        </p>
+      </div>
+    </section>
+    <section id="motor-bus">
+      <div
+        class="motor1"
+        data-aos="fade-up"
+        data-aos-delay="300"
+        data-aos-duration="1000"
+      >
+        <img src="asset/images/motor1.webp" alt="" />
+      </div>
+    </section>
+    <section id="luxury">
+      <div class="luxury1">
+        <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          LUXURY BEYOND PLACES
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          The extravagant motorhome, boasting a length of 12 meters (39.4 ft)
+          and over 30 square meters (320 sq ft) of refined, luxurious BRABUS
+          Masterpiece living space, features two electrically extendable
+          slide-outs on each side, which can extend the bedroom and saloon to a
+          width of 4.50 meters (14.8 ft). Hydraulically extendable supports
+          level the vehicle perfectly, ensuring that the BRABUS BIG BOY 1200
+          stands securely on any surface. A door with electrically extendable
+          steps on the right-hand side of the saloon facilitates entry and exit
+          to the passenger cabin.
+        </p>
+        <br />
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          Two extendable modules in the sleeping compartment create space for
+          the comfortable, transversely positioned double bed measuring 160 x
+          200 centimeters (63 x 79 in). A large closet is integrated into the
+          rear wall of the motorhome. A desk and a 43-inch 4K television are
+          installed in the side wall opposite the bed, which, like an identical
+          device in the saloon, can be used to watch TV programs or play games
+          on the integrated Playstation 5 system. Thanks to satellite internet
+          via Starlink, passengers can watch streaming services, access content
+          from the internet or communicate with the whole world, even in remote
+          areas.
+        </p>
+      </div>
+    </section>
+    <section id="mousewhell">
+      <div
+        class="two-cars"
+        data-aos="fade-up"
+        data-aos-delay="300"
+        data-aos-duration="1000"
+      >
+        <swiper-container
+          class="slider1"
+          pagination="true"
+          pagination-clickable="true"
+          direction="horizontal"
+          space-between="30"
+          mousewheel="true"
+        >
+          <swiper-slide
+            ><img src="asset/images/motor2.webp" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/motor3.webp" alt=""
+          /></swiper-slide>
+        </swiper-container>
+      </div>
+    </section>
+    <section id="luxury">
+      <div class="luxury1">
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          In the living room, owners and their guests find comfortable seating
+          on the two sofas upholstered in the finest gray BRABUS leather, which,
+          like the seats in the driver's compartment and the door panels, are
+          quilted with pinpoint precision in the BRABUS "Triangle" design. As a
+          tasteful contrast to the gray used not only for parts of the interior
+          but also for the high-quality carpeting, other sections are finished
+          in black fine wood or in matching black Alcantara. Carbon trims add a
+          decidedly sporty touch throughout the interior.
+        </p>
+        <br />
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          The saloon also features a modern kitchen with an induction hob, oven,
+          dishwasher and spacious fridge with an integrated freezer compartment.
+          A separate wine fridge and coffee machine are also available for
+          drinks. The sofa opposite the kitchen, together with designer chairs
+          upholstered in black and gray fabric and a large black table, can
+          become part of a dining room. This ensemble can also be used as a
+          comfortable workstation or a mobile office. Of course, there is also a
+          luxurious bathroom in fine natural stone with a rainforest shower, WC
+          and washbasin between the bedroom and living area.
+        </p>
+      </div>
+    </section>
+    <section id="slider2">
+      <div
+        class="sli1"
+        data-aos="fade-up"
+        data-aos-delay="300"
+        data-aos-duration="1000"
+      >
+        <swiper-container
+          class="slider1"
+          pagination="true"
+          pagination-type="progressbar"
+          navigation="true"
+        >
+          <swiper-slide
+            ><img src="asset/images/motor4.webp" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/motor5.webp" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/motor6.webp" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/motor7.webp" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/motor8.webp" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/motor9.webp" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/motor10.webp" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/motor11.webp" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/motor12.webp" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/motor13.webp" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/motor14.webp" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/motor15.webp" alt=""
+          /></swiper-slide>
+        </swiper-container>
+      </div>
+    </section>
+    <section id="luxury">
+      <div class="luxury1">
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          An automatic air conditioning system and a parking heater ensure
+          comfortable temperatures throughout the motorhome, depending on the
+          season and requirements. Wherever the BRABUS BIG BOY 1200 is parked,
+          both systems can be plugged in or powered on the move by the eight
+          solar panels on the roof and the on-board energy storage system.
+        </p>
+        <br />
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          The driver's cabin with two separate doors boasts two comfortable
+          seats, upholstered in gray BRABUS Masterpiece leather and featuring
+          BRABUS “Triangle” design quilting as well as precise perforations.
+          Directly above the cockpit is an electrically lowerable bed 160
+          centimeters (63 in) wide. Curtains close off the cockpit from the
+          outside world and the salon.
+        </p>
+      </div>
+    </section>
+    <section id="mousewhell1">
+      <div
+        class="two-cars"
+        data-aos="fade-up"
+        data-aos-delay="300"
+        data-aos-duration="1000"
+      >
+        <swiper-container
+          class="slider1"
+          pagination="true"
+          pagination-clickable="true"
+          direction="horizontal"
+          space-between="30"
+          mousewheel="true"
+        >
+          <swiper-slide
+            ><img src="asset/images/col14.jpg" alt=""
+          /></swiper-slide>
+          <swiper-slide
+            ><img src="asset/images/col15.jpg" alt=""
+          /></swiper-slide>
+        </swiper-container>
+      </div>
+    </section>
+    <section id="luxury">
+      <div class="luxury1">
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          From the outside, the BRABUS BIG BOY 1200 impresses with its king-size
+          dimensions and elegant all-black exterior. The brand-typical look also
+          includes the illuminated BRABUS logo in the exposed carbon radiator
+          grille. The same high-tech compound is used to produce the side wind
+          deflectors, the covers for the fog lights and the handles for opening
+          the hood. To match the main headlights, the auxiliary headlights
+          attached to the BRABUS roof light bar and the rear lights likewise
+          feature LED technology.
+        </p>
+        <br />
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          Of course, an exclusive BRABUS motorhome also needs a powerful engine.
+          The 12.8-liter six-cylinder turbodiesel delivers 390 kW / 530 hp and
+          generates a maximum torque of 2,600 Nm (1,918 lb-ft). The BRABUS BIG
+          BOY 1200’s top speed is limited to 90 km/h (56 mph).
+        </p>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          The three-axle chassis with two sets of dual tires on each side at the
+          rear is designed for outstanding comfort and safe handling. In order
+          to maintain perfect situational awareness of the vehicle and its
+          surroundings at all times, the motorhome is equipped with a 360-degree
+          camera monitoring system.
+        </p>
+      </div>
+    </section>
+    <section
+      id="accord"
+      data-aos="fade-up"
+      data-aos-delay="300"
+      data-aos-duration="1000"
+    >
+      <!-- <div class="accordian">
+        <div class="accordian-item">
+          <button class="accordian-btn">
+            Features BRABUS BIG BOY 1200 <i class="fa-solid fa-arrow-up"></i>
+          </button>
+          <div class="accordian-content">
+            <div class="dropdown-container">
+              <div class="dropdown-header" onclick="toggleDropdown(this)">
+                BRABUS VEHICLE SPECIFICATIONS
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="dropdown-container">
+        <div class="dropdown-header" onclick="toggleDropdown(this)">
+          <button class="accordian-btn">
+            Features BRABUS BIG BOY 1200 <i class="fa-solid fa-arrow-up"></i>
+          </button>
+        </div>
+        <div class="dropdown-content">
+          <div class="grid-layout">
+            <!-- LEFT COLUMN -->
+            <div>
+              <div class="section">
+                <div class="section-title">BASIC VEHICLE</div>
+                <table class="spec-list">
+                  <tr>
+                    <td colspan="2">Diesel tank 390L, AdBlue tank 60L</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Security package</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Travel package</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Visibility package with LED headlights</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Cruise control</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      Climate package for driver and front passenger
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Automatic air conditioning in the cabin</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Webasto cabin night heater</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Turn assistant</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Media package</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="section">
+                <div class="section-title">TECHNICAL DATA</div>
+                <table class="spec-list">
+                  <tr>
+                    <td>Displacement:</td>
+                    <td>12,800 cm³</td>
+                  </tr>
+                  <tr>
+                    <td>Power:</td>
+                    <td>390 kW (530 HP) at 1,600 rpm</td>
+                  </tr>
+                  <tr>
+                    <td>Torque:</td>
+                    <td>2,600 Nm at 1,100 rpm</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="section">
+                <div class="section-title">DESIGN & EXTERIOR</div>
+                <table class="spec-list">
+                  <tr>
+                    <td colspan="2">Frame made of galvanized steel profiles</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Trailer coupling 3.5T</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      4 hydraulic supports for automatic vehicle leveling with
+                      integrated monitor
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      Insulated sandwich panels for roof, floor, side walls with
+                      aluminum cladding
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      Double-glazed windows with electrically integrated blinds
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div>
+              <div class="section">
+                <div class="section-title">WHEEL & CHASSIS</div>
+                <table class="spec-list">
+                  <tr>
+                    <td colspan="2">22.5” aluminum wheels black</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Twin tires on the second axle</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      Intelligent braking system with ABS and ASR
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Chassis with three-axle running gear</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Trailing axle steered</td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="section">
+                <div class="section-title">INTERIOR EQUIPMENT</div>
+
+                <div class="subsection-title">Driver's cab</div>
+                <table class="spec-list">
+                  <tr>
+                    <td colspan="2">BRABUS Masterpiece Interior</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      Bed (160 cm) with electric lifting function
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Curtains on the windshield</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      Two roller curtains between cabin and living area
+                    </td>
+                  </tr>
+                </table>
+
+                <div class="subsection-title">Living room</div>
+                <table class="spec-list">
+                  <tr>
+                    <td colspan="2">BRABUS leather sofas & leather cushions</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">BRABUS Carbon trim strips</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      Entertainment package (Smart TV 43”, PlayStation 5,
+                      soundbar)
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Inductive charger</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Movable and foldable table</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Paola Lenti chairs</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Carpet Sahrai</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Two electrically opening skylights</td>
+                  </tr>
+                </table>
+
+                <div class="subsection-title">Kitchen</div>
+                <table class="spec-list">
+                  <tr>
+                    <td colspan="2">BRABUS Carbon trim strips</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">Induction hobs Gaggenau</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="last">
+      <div class="last-info">
+        <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          BRABUS Big Boy 1200
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          The BRABUS BIG BOY 1200 is only available for approved markets. <br />
+          Please send us an inquiry and we will check your request individually.
+        </p>
+        <button
+          data-aos="fade-up"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          request now
+        </button>
+      </div>
+    </section>
+    <div class="wave">
+      <img src="asset/images/wave2.avif" alt="" />
+    </div>
+    <footer data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+      <div
+        class="footer-container"
+        data-aos="fade-up"
+        data-aos-delay="300"
+        data-aos-duration="1000"
+      >
+        <div class="footer5">
+          <img src="asset/logo/babus.svg" alt="" />
+          <p>
+            We create modern, individual luxury by developing <br />
+            products with a wow factor that put our <br />
+            customers in the spotlight.
+          </p>
+        </div>
+        <div class="footer1">
+          <h3>Discover</h3>
+          <nav>
+            <ul>
+              <li>Tuning shop</li>
+              <li>Fashion shop</li>
+              <li>Cars4Sale</li>
+              <li>Who we are</li>
+              <li>Career</li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer2">
+          <h3>Get in Touch</h3>
+          <nav>
+            <ul>
+              <li>Find a dealer</li>
+              <li>Contact</li>
+              <li>Revocation & Claim</li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer3">
+          <h3>Information</h3>
+          <nav>
+            <ul>
+              <li>Imprint</li>
+              <li>Terms</li>
+
+              <li>Privacy policy</li>
+              <li>Cookie settings</li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer4">
+          <h3>Newsletter</h3>
+          <p>
+            Be part of the BRABUS community and subscribe <br />
+            to the newsletter now!
+          </p>
+          <button>NEWSLETTER</button>
+        </div>
+      </div>
+      <div class="footer-info">
+        <div class="copyright">
+          <p>© — BRABUS 2017–2025</p>
+        </div>
+        <div class="country">
+          <p>Country-/Language version</p>
+          <h5><i class="fa-solid fa-globe"></i> International - English</h5>
+        </div>
+        <div class="social-media">
+          <p>Social media</p>
+          <div class="links">
+            <div class="insta1"><i class="fa-brands fa-instagram"></i></div>
+            <div class="inkdine1"><i class="fa-brands fa-linkedin"></i></div>
+            <div class="facebook1"><i class="fa-brands fa-facebook-f"></i></div>
+            <div class="youtube1"><i class="fa-brands fa-youtube"></i></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+      Delay = 1000;
+    </script>
+    <script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById("dropdown");
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
+      }
+
+      function closeDropdown() {
+        document.getElementById("dropdown").style.display = "none";
+      }
+
+      // Optional: Click outside to close
+      document.addEventListener("click", function (event) {
+        var dropdown = document.getElementById("dropdown");
+        var button = document.querySelector(".cars-button");
+        if (
+          !dropdown.contains(event.target) &&
+          !button.contains(event.target)
+        ) {
+          dropdown.style.display = "none";
+        }
+      });
+    </script>
+
+    <script>
+      let ham = document.querySelector(".menu");
+      let aside = document.querySelector("aside");
+      ham.addEventListener("click", function () {
+        aside.style.transform = "translateX(0px)";
+      });
+      let close = document.querySelector(".close");
+      close.addEventListener("click", function () {
+        aside.style.transform = "translateX(-300px)";
+      });
+    </script>
+    <script>
+      function openPanel() {
+        document.getElementById("rightPanel").classList.add("open");
+      }
+
+      function closePanel() {
+        document.getElementById("rightPanel").classList.remove("open");
+      }
+
+      // Optional: close on outside click
+      document.addEventListener("click", function (e) {
+        const panel = document.getElementById("rightPanel");
+        const icon = document.querySelector(".icon-btn");
+        if (!panel.contains(e.target) && !icon.contains(e.target)) {
+          panel.classList.remove("open");
+        }
+      });
+    </script>
+    <script>
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+    </script>
+    <script>
+      const countries = [
+        { name: "India", code: "in" },
+        { name: "United States", code: "us" },
+        { name: "United Kingdom", code: "gb" },
+        { name: "Germany", code: "de" },
+        { name: "France", code: "fr" },
+        { name: "Canada", code: "ca" },
+        { name: "Australia", code: "au" },
+        { name: "Japan", code: "jp" },
+        { name: "Brazil", code: "br" },
+        { name: "South Africa", code: "za" },
+      ];
+
+      const dropdownCountry = document.getElementById("dropdown-country");
+      const selectedCountry = document.getElementById("selected-country");
+
+      function toggleCountryDropdown() {
+        dropdownCountry.style.display =
+          dropdownCountry.style.display === "block" ? "none" : "block";
+      }
+
+      function selectCountry(name, code) {
+        selectedCountry.innerHTML = `<img src="https://flagcdn.com/w20/${code}.png"> ${name}`;
+        dropdownCountry.style.display = "none";
+      }
+
+      countries.forEach((country) => {
+        const item = document.createElement("div");
+        item.className = "dropdown-item";
+        item.innerHTML = `<img src="https://flagcdn.com/w20/${country.code}.png"> ${country.name}`;
+        item.onclick = () => selectCountry(country.name, country.code);
+        dropdownCountry.appendChild(item);
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest(".dropdown-container")) {
+          dropdownCountry.style.display = "none";
+        }
+      });
+    </script>
+    <script>
+      function openCart() {
+        document.getElementById("cartPanel").style.right = "0";
+      }
+
+      function closeCart() {
+        document.getElementById("cartPanel").style.right = "-100%";
+      }
+    </script>
+    <script>
+      let header = document.querySelectorAll(".accordian-btn");
+      header.forEach((button) => {
+        button.addEventListener("click", function () {
+          let item = this.parentElement;
+          let allitem = document.querySelectorAll(".dropdown-header");
+          allitem.forEach((accitem) => {
+            if (item != accitem) {
+              accitem.classList.remove("active");
+            }
+          });
+          item.classList.toggle("active");
+        });
+      });
+    </script>
+    <script>
+      function toggleDropdown(el) {
+        const content = el.nextElementSibling;
+        content.style.display =
+          content.style.display === "block" ? "none" : "block";
+      }
+    </script>
+  </body>
+</html>

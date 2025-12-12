@@ -1,0 +1,1945 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"
+      integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css"
+      integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- AOS CSS -->
+    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      * {
+        margin: 0%;
+        padding: 0%;
+      }
+      html,
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+        /* overflow-y: hidden;  */
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 9;
+        background: #fff;
+      }
+
+      .header-container {
+        display: grid;
+        grid-template-columns: 2fr 7fr 3fr;
+        gap: 40px;
+        padding: 20px 30px;
+        text-align: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .menu {
+        font-size: 35px;
+      }
+
+      .icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        font-size: 30px;
+      }
+      .hamburg aside ul {
+        list-style: none;
+        font-family: "Sansation", sans-serif;
+        text-transform: uppercase;
+        text-align: start;
+      }
+
+      .hamburg aside {
+        display: block;
+        transition: all 0.6 ease-in-out;
+        transform: translateX(-300px);
+        position: absolute;
+        left: 0%;
+        top: 0%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        width: 300px;
+        height: 100vh;
+      }
+      .hamburg aside nav ul li a {
+        color: #000000;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 20px;
+        font-weight: 650;
+        text-decoration: none;
+      }
+      .hamburg aside nav ul li {
+        margin-bottom: 20px;
+      }
+      .hamburg aside nav ul li :hover {
+        color: purple;
+      }
+      .hamburg .close {
+        color: #000000;
+        position: absolute;
+        top: 60px;
+        right: 40px;
+      }
+      .hamburg .close i {
+        font-size: 30px;
+      }
+      .menu-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .cars-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #000000;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 20px;
+        font-weight: 650;
+        text-decoration: none;
+      }
+
+      .dropdown {
+        display: none;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        width: 220px;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        z-index: 100;
+      }
+
+      .dropdown a {
+        display: block;
+        padding: 12px 16px;
+        color: #000;
+        text-decoration: none;
+        border-bottom: 1px solid #eee;
+      }
+
+      .dropdown a:hover {
+        background-color: #f5f5f5;
+      }
+
+      .close-icon {
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        font-size: 20px;
+        color: #888;
+        cursor: pointer;
+      }
+
+      .dropdown-header {
+        font-weight: bold;
+        padding: 12px 16px 4px;
+      }
+
+      #arrow {
+        position: absolute;
+        top: 0px;
+        left: 100px;
+      }
+
+      .icon-btn {
+        background: none;
+        border: none;
+        font-size: 26px;
+        cursor: pointer;
+      }
+
+      /* Full-height right slider panel */
+      .slider-panel {
+        height: 100vh;
+        width: 350px;
+        position: fixed;
+        top: 0;
+        right: -350px;
+        background-color: #fff;
+        box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+        transition: right 0.4s ease;
+        z-index: 1000;
+        padding: 24px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        padding: 30px 70px;
+      }
+      .slider-icons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .slider-panel.open {
+        right: 0;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 12px;
+        right: 20px;
+        font-size: 45px;
+        font-weight: bold;
+        color: #444;
+        cursor: pointer;
+      }
+
+      .slider-panel h2 {
+        margin-top: 40px;
+        font-size: 25px;
+        text-align: start;
+      }
+      .slider-panel p {
+        margin-top: 20px;
+        font-size: 16px;
+        text-align: start;
+        color: #00000081;
+      }
+      .info1 {
+        color: teal;
+        font-weight: 400;
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: start;
+      }
+
+      .note {
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+        text-align: start;
+        color: #00000081;
+      }
+
+      .dropdown-container {
+        width: 200px;
+        position: relative;
+      }
+
+      .dropdown-selected {
+        padding: 8px 10px;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 18px;
+      }
+
+      .dropdown-selected:after {
+        content: "▼";
+        font-size: 14px;
+        margin-left: 10px;
+        color: #777;
+      }
+
+      .dropdown-list {
+        position: absolute;
+        top: 110%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        max-height: 250px;
+        overflow-y: auto;
+        z-index: 100;
+        display: none;
+      }
+
+      .dropdown-item {
+        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      .dropdown-item img {
+        width: 20px;
+        height: 14px;
+        margin-right: 10px;
+        object-fit: cover;
+      }
+
+      .dropdown-item:hover {
+        background-color: #f0f0f0;
+      }
+      .other-countries {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: start;
+      }
+      .global-btn:hover {
+        background-color: #b70826;
+        color: white;
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      .global-btn {
+        background-color: black;
+        color: white;
+        padding: 12px;
+        text-align: center;
+        font-weight: 400;
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        font-size: 20px;
+      }
+      .info {
+        font-size: 14px;
+        color: #222;
+        margin-top: 16px;
+      }
+
+      .info-box {
+        background-color: #f0fbfc;
+        border-left: 4px solid #58b3c0;
+        padding: 12px 14px;
+        margin-top: 20px;
+        color: #2b727a;
+        font-size: 14px;
+      }
+
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        z-index: 1000;
+        background-color: transparent;
+      }
+
+      header.scrolled {
+        background-color: white;
+        box-shadow: 0 0 14px 6px #898787;
+        /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+      }
+      .cart-panel {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 300px;
+        background-color: white;
+        z-index: 9999;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      /* Header with icons */
+      .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 30px;
+        margin-bottom: 40px;
+      }
+
+      /* Buttons */
+      .cart-body .cart-btn {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 20px;
+        font-size: 25px;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 1px;
+        font-weight: 500;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .cart-grey {
+        background-color: #999;
+        color: black;
+      }
+      .cart-black {
+        background-color: black;
+        color: white;
+      }
+      .cart-grey:hover {
+        background-color: #b70826;
+        transition: all 2s ease-in-out;
+        transform: scale(1.1);
+      }
+      .cart-black:hover {
+        background-color: #b70826;
+        transition: all 2s ease-in-out;
+        transform: scale(1.1);
+      }
+      .header-video video {
+        width: 100%;
+        height: 100%;
+      }
+      #collection-info {
+        padding: 10px 100px;
+      }
+      .collection-25 {
+        text-align: center;
+      }
+      .collection-25 h2 {
+        margin-top: 100px;
+        font-size: 50px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-family: "Rajdhani", sans-serif;
+        margin-bottom: 40px;
+        animation: move1 4s ease-in-out infinite alternate-reverse;
+      }
+
+      @keyframes move1 {
+        0% {
+          transform: translate(0);
+        }
+
+        50% {
+          transform: translateX(20px) scale(1.3);
+        }
+
+        100% {
+          transform: translate(0);
+        }
+      }
+      h2:hover {
+        color: #b70826;
+      }
+      .collection-25 p {
+        font-size: 22px;
+        font-weight: 400;
+        margin-bottom: 30px;
+        line-height: 1cm;
+        font-family: "Rajdhani", sans-serif;
+        padding: 5px 90px;
+        box-sizing: border-box;
+      }
+      .col-photo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .car1 {
+        position: relative;
+      }
+      .car2 {
+        position: relative;
+      }
+      .car1 img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      img:hover {
+        transform: scale(1.2);
+      }
+      .car2 img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .car2 {
+        overflow: hidden;
+      }
+      .car1 {
+        overflow: hidden;
+      }
+
+      .car1-info {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        color: #ffffff;
+        padding: 5px 90px;
+      }
+      .car1-info p {
+        font-size: 20px;
+        font-weight: 400;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .car1-info h2 {
+        margin-top: 100px;
+        font-size: 40px;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .car1-info a {
+        text-decoration: none;
+        color: #fff;
+      }
+      .car2-info a {
+        text-decoration: none;
+        color: #fff;
+      }
+      .car2-info {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        color: #ffffff;
+        padding: 5px 90px;
+      }
+      .car2-info p {
+        font-size: 20px;
+        font-weight: 400;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .car2-info h2 {
+        margin-top: 100px;
+        font-size: 40px;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .big-car img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .big-car {
+        position: relative;
+        overflow: hidden;
+      }
+      .big-info {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        padding: 5px 90px;
+        color: #ffffff;
+      }
+      .big-info p {
+        font-size: 20px;
+        font-weight: 450;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .big-info h2 {
+        margin-top: 100px;
+        font-size: 40px;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .big-info button {
+        padding: 5px 10px;
+        background-color: #fff;
+        color: #000;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        border: none;
+        margin-top: 20px;
+        font-size: 20px;
+        box-shadow: 0 0 14px 6px #898787;
+      }
+
+      .big-info button:hover {
+        background-color: #b70826;
+        color: white;
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      #big {
+        padding: 100px 10px;
+      }
+      .big-boy {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: start;
+        align-items: center;
+        justify-content: center;
+      }
+      .big-car-info {
+        background-color: #000000;
+        color: #ffffff;
+        padding: 50px 100px;
+        width: 100%;
+        height: 100%;
+      }
+      .big-car-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .big-car-image:hover img {
+        transform: scale(1.1);
+      }
+      .big-car-image {
+        overflow: hidden;
+      }
+      .big-car-info p {
+        font-size: 20px;
+        font-weight: 480;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+      }
+      .big-car-info h2 {
+        margin-top: 50px;
+        font-size: 50px;
+        margin-bottom: 70px;
+        letter-spacing: 2px;
+        font-weight: 450;
+        text-transform: uppercase;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .big-car-info button {
+        padding: 5px 10px;
+        background-color: #fff;
+        color: #000;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        border: none;
+        margin-top: 20px;
+        font-size: 20px;
+        box-shadow: 0 0 14px 6px #898787;
+      }
+
+      .big-car-info button:hover {
+        background-color: #b70826;
+        color: white;
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      #beyond-black {
+        background-color: #000;
+        padding: 50px 5px;
+        color: white;
+      }
+      .beyond-img {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+      }
+      .beyond-info p {
+        font-size: 20px;
+        font-weight: 480;
+        margin-bottom: 50px;
+        letter-spacing: 1px;
+      }
+      .beyond-info {
+        text-align: center;
+      }
+      .beyond-info h2 {
+        margin-top: 50px;
+        font-size: 50px;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+        font-weight: 450;
+        text-transform: uppercase;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .bey1 {
+        padding: 50px;
+      }
+      .bey1 img {
+        border-radius: 50%;
+        margin-bottom: 40px;
+        width: 400px;
+        height: 400px;
+        animation: animate1 30s ease-in-out infinite;
+      }
+      @keyframes animate1 {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        50% {
+          transform: rotate(360deg);
+        }
+        100% {
+          transform: rotate(0deg);
+        }
+      }
+
+      .bey1 h4 {
+        margin-top: 10px;
+        font-size: 25px;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-family: "Rajdhani", sans-serif;
+        text-align: center;
+      }
+      .bey1 h4:hover {
+        color: #a60722;
+      }
+      .bey1 p {
+        margin-top: 10px;
+        font-size: 18px;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+        font-weight: 400;
+        color: #ffffff;
+        text-transform: capitalize;
+        font-family: "Rajdhani", sans-serif;
+        text-align: center;
+      }
+      .two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .two img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .two {
+        overflow: hidden;
+      }
+      .rocket {
+        position: relative;
+      }
+      .rocket-info {
+        position: absolute;
+        bottom: 10%;
+        left: 10%;
+      }
+      .rocket-info a {
+        text-decoration: none;
+      }
+      .all-info a {
+        text-decoration: none;
+      }
+      .all {
+        position: relative;
+      }
+      .all-info {
+        position: absolute;
+        bottom: 10%;
+        right: 10%;
+      }
+      .rocket-info h2 {
+        font-size: 40px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-family: "Rajdhani", sans-serif;
+        text-align: start;
+      }
+      .rocket-info h2:hover {
+        color: #a60722;
+      }
+      .all-info h2 {
+        font-size: 40px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: #ffffff;
+        text-transform: uppercase;
+        font-family: "Rajdhani", sans-serif;
+        text-align: end;
+      }
+      .all-info h2:hover {
+        color: #a60722;
+      }
+
+      .all-info p {
+        margin-top: 10px;
+        font-size: 20px;
+        letter-spacing: 2px;
+        font-weight: 400;
+        color: #ffffff;
+        text-transform: capitalize;
+        font-family: "Rajdhani", sans-serif;
+        text-align: end;
+      }
+      #superboat h2 {
+        font-size: 40px;
+        letter-spacing: 2px;
+        font-weight: 500;
+        color: #0b0b0b;
+        text-transform: uppercase;
+        font-family: "Rajdhani", sans-serif;
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      #superboat h2:hover {
+        color: #a60722;
+      }
+      #superboat {
+        padding: 50px 300px;
+      }
+      .sup-boat {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+      }
+      .sup-boat img {
+        width: 400px;
+        height: 300px;
+      }
+
+      .sup1 h4 {
+        margin-top: 10%;
+        text-transform: uppercase;
+      }
+      .sup1 a {
+        text-decoration: none;
+        color: #000;
+      }
+      .sup2 a {
+        text-decoration: none;
+        color: #000;
+      }
+      .sup-boat h4:hover {
+        color: #a60722;
+      }
+
+      .sup2 h4 {
+        margin-top: 10%;
+        text-transform: uppercase;
+      }
+      .sup1 p {
+        text-transform: uppercase;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+        letter-spacing: 2px;
+      }
+      .sup2 p {
+        text-transform: uppercase;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+        letter-spacing: 2px;
+      }
+      .amb-info h2 {
+        font-size: 50px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 60px;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .amb-info h2:hover {
+        color: #a60722;
+      }
+      .amb-info p {
+        font-size: 20px;
+        font-weight: 400;
+        color: #000000b4;
+        margin-bottom: 30px;
+      }
+      .amb-img {
+        overflow: hidden;
+      }
+      .amb-img img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .amb-info button {
+        padding: 10px 50px;
+        background-color: #000;
+        color: #fff;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 20px;
+        font-size: 20px;
+        box-shadow: 0 0 14px 6px #898787;
+      }
+
+      .amb-info button:hover {
+        background-color: #b70826;
+        color: white;
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      .amb-main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        text-align: start;
+        align-items: center;
+        justify-content: center;
+      }
+      #ambition {
+        padding: 50px 50px;
+        background-color: rgba(245, 245, 245, 0.878);
+      }
+      .fan-info h2 {
+        font-size: 50px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 60px;
+        font-family: "Rajdhani", sans-serif;
+      }
+      .fan-info h2:hover {
+        color: #a60722;
+      }
+      .fan-info p {
+        font-size: 20px;
+        font-weight: 400;
+        color: #000000b4;
+        margin-bottom: 30px;
+      }
+      .fan-img {
+        overflow: hidden;
+      }
+      .fan-img img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .fan-info button {
+        padding: 10px 50px;
+        background-color: #000;
+        color: #fff;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 20px;
+        font-size: 20px;
+        box-shadow: 0 0 14px 6px #898787;
+      }
+
+      .fan-info button:hover {
+        background-color: #b70826;
+        color: white;
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      .fan-main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        text-align: start;
+        align-items: center;
+        justify-content: center;
+      }
+      #fashion {
+        padding: 50px 50px;
+        background-color: rgba(245, 245, 245, 0.878);
+      }
+      #youtube {
+        padding: 50px 50px;
+      }
+      .you1 img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .you1 {
+        position: relative;
+        overflow: hidden;
+      }
+      .you2 {
+        position: absolute;
+        bottom: 0%;
+        left: 0%;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .you2 h2 {
+        font-size: 50px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 60px;
+        font-family: "Rajdhani", sans-serif;
+        color: #fff;
+      }
+      .you2 a {
+        text-decoration: none;
+      }
+      .you2 a h2:hover {
+        color: #a5e0f2;
+      }
+      .aura-info h2 {
+        font-size: 50px;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 60px;
+        font-family: "Rajdhani", sans-serif;
+        color: #fff;
+      }
+      .aura-info h2:hover {
+        color: #a60722;
+      }
+      .aura-info p {
+        font-size: 20px;
+        font-weight: 400;
+        color: #ffffff;
+        margin-bottom: 30px;
+      }
+      .aura-image {
+        overflow: hidden;
+      }
+      .aura-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .aura-info button {
+        padding: 10px 50px;
+        background-color: #fffcfc;
+        color: #030303;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 20px;
+        font-size: 20px;
+        box-shadow: 0 0 14px 6px #898787;
+      }
+
+      .aura-info button:hover {
+        background-color: #b70826;
+        color: white;
+        transition: all 2s ease-in-out;
+        transform: scale(1.2);
+      }
+      .aura-main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        text-align: start;
+        align-items: center;
+        justify-content: center;
+      }
+      #aura {
+        padding: 50px 50px;
+        background-color: rgb(6, 6, 6);
+      }
+      .wave img {
+        width: 100%;
+        height: 300px;
+        background-color: #3a3a3a;
+      }
+      footer {
+        padding: 100px 100px;
+      }
+      .footer-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+        background-color: #fff;
+        color: #000;
+        margin-bottom: 50px;
+        gap: 60px;
+        text-align: start;
+      }
+      .footer5 img {
+        width: 100px;
+        height: auto;
+        margin-bottom: 20px;
+      }
+      .footer5 p {
+        color: rgba(0, 0, 0, 0.726);
+        font-size: 18px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+      }
+      .footer4 p {
+        color: rgba(0, 0, 0, 0.726);
+        font-size: 18px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+      }
+      .footer-container h3 {
+        text-transform: uppercase;
+        color: #000;
+        font-size: 22px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 600;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+      }
+      .footer-container h3:hover {
+        color: #b70826;
+      }
+      .footer-container nav ul {
+        padding-left: 0%;
+      }
+      .footer-container nav ul li {
+        list-style: none;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+        margin-bottom: 15px;
+      }
+      .footer-container nav ul li:hover {
+        color: rgba(192, 7, 7, 0.67);
+        text-decoration: underline;
+      }
+      .footer4 button {
+        padding: 10px 110px;
+        background-color: #000;
+        color: #fff;
+        font-family: "Rajdhani", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 20px;
+      }
+      .footer-info {
+        display: grid;
+        grid-template-columns: 2fr 4fr 2fr;
+        text-align: start;
+        gap: 60px;
+      }
+      .footer-info p {
+        color: rgba(0, 0, 0, 0.788);
+        font-size: 18px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      .social-media .links {
+        display: flex;
+        gap: 60px;
+        margin-top: 10px;
+        align-items: center;
+        justify-content: center;
+      }
+      .social-media .links i {
+        border-radius: 50%;
+        background-color: black;
+        color: white;
+        font-size: 20px;
+        padding: 10px 10px;
+      }
+      .social-media .links:hover {
+        color: #00000055;
+      }
+      .country h5 {
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+        font-family: "Rajdhani", sans-serif;
+        font-weight: 400;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="navbar">
+      <div class="header-container">
+        <div class="hamburg">
+          <div class="menu">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+          <aside>
+            <nav>
+              <ul>
+                <li><a href="car.html">Home</a></li>
+                <li>
+                  <div class="menu-container">
+                    <button class="cars-button" onclick="toggleDropdown()">
+                      CARS <span id="arrow">+</span>
+                    </button>
+
+                    <div id="dropdown" class="dropdown">
+                      <span class="close-icon" onclick="closeDropdown()"
+                        >×</span
+                      >
+                      <div class="dropdown-header">CARS</div>
+                      <a href="#">SUPERCARS</a>
+                      <a href="#">TUNING</a>
+                      <a href="#">CARS FOR SALE</a>
+                      <a href="classic.html">CLASSICS</a>
+                      <a href="#">ARMORING</a>
+                    </div>
+                  </div>
+                </li>
+                <li><a href="boat.html">Boats</a></li>
+                <li><a href="island.html">BRABUS Island</a></li>
+                <li><a href="collection.html">Collection 25</a></li>
+                <li><a href="motar.html">Motorhomes</a></li>
+                <li><a href="fashion.html">Fashion</a></li>
+                <li>
+                  <a
+                    href="https://www.brabus.com/en-int/coops/brabus-x-sunreef.html"
+                    >Collaborations</a
+                  >
+                </li>
+                <li>
+                  <a href="https://sonnet.titan.in/#/login">Brand</a>
+                </li>
+                <li>
+                  <a href="https://www.titan.co.in/titan-grandmaster?lang=en_IN"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </nav>
+            <div class="close">
+              <i class="fa-solid fa-x"></i>
+            </div>
+          </aside>
+        </div>
+        <div class="logo">
+          <img src="asset/logo/babus.svg" alt="" />
+        </div>
+        <div class="icons">
+          <div class="topbar">
+            <button class="icon-btn" onclick="openPanel()">
+              <i class="fa-solid fa-globe"></i>
+            </button>
+          </div>
+
+          <!-- Right slider panel -->
+          <div id="rightPanel" class="slider-panel">
+            <div class="slider-icons">
+              <div class="slider-global">
+                <i class="fa-solid fa-globe"></i>
+              </div>
+              <div class="slider-user">
+                <i class="fa-solid fa-user"></i>
+              </div>
+              <div class="slider-shop">
+                <i class="fa fa-bag-shopping"></i>
+              </div>
+              <div class="slider-close">
+                <span class="close-btn" onclick="closePanel()">×</span>
+              </div>
+            </div>
+            <h2>
+              WELCOME TO <br />
+              BRABUS.COM
+            </h2>
+            <p>
+              Please select the website that fits your profile. We deliver
+              worldwide. In the following countries there is an online shop
+              available.
+            </p>
+            <div class="info1">🛈 Your shopping cart will be cleared</div>
+            <div class="note">
+              If you switch countries, items in your shopping cart will be
+              removed, as not all products are available in all countries.
+            </div>
+
+            <div class="dropdown-container">
+              <div
+                class="dropdown-selected"
+                onclick="toggleCountryDropdown()"
+                id="selected-country"
+              >
+                <i class="fa-solid fa-globe"></i> Choose Country
+              </div>
+              <div class="dropdown-list" id="dropdown-country">
+                <!-- Country Options -->
+              </div>
+            </div>
+
+            <div class="other-countries">ALL OTHER COUNTRIES:</div>
+            <a href="car.html" class="global-btn">GLOBAL SITE (EN)</a>
+          </div>
+
+          <div class="icon">
+            <i class="fa-solid fa-user"></i>
+          </div>
+
+          <i class="fa fa-bag-shopping" onclick="openCart()"></i>
+
+          <div class="cart-panel" id="cartPanel">
+            <div class="cart-header">
+              <i class="fa fa-globe"></i>
+              <i class="fa fa-user"></i>
+              <i class="fa fa-xmark" onclick="closeCart()"></i>
+            </div>
+            <div class="cart-body">
+              <a href="https://checkout.brabus.com/en/checkout/cart"
+                ><button class="cart-btn cart-grey">TO THE CART</button></a
+              >
+              <a href="https://checkout.brabus.com/en/checkout/cart"
+                ><button class="cart-btn cart-black">TO CHECKOUT</button></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="hd-video">
+      <div class="header-video">
+        <video
+          src="asset/video/collection video.mp4"
+          controls
+          loop
+          autoplay
+          muted
+          class="d-block w-100"
+          alt="..."
+        ></video>
+      </div>
+    </section>
+    <section id="collection-info">
+      <div class="collection-25">
+        <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          Collection 25
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          BRABUS Signature Night is the culmination of everything we work
+          for—the annual pulse of our brand. It is the number one global BRABUS
+          show in which every year’s BRABUS Masterpiece Collection is presented
+          as a tasteful ensemble in an emotion-first runway show. It is a
+          celebration of design, innovation and elegance—of our team’s work and
+          the BRABUS community. An evening that combines every facet of the
+          world of BRABUS— cars, boats, motorbikes and fashion—into an
+          experience unlike any other. BRABUS Signature Night remains a very
+          exclusive, by-invitation-only event in which the international
+          audience is as fascinating as the tradition of unexpected world
+          premieres.
+        </p>
+        <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          The 2025 Masterpiece Collection focuses on the beauty of individual
+          design, showcasing product premieres and evolutions while maintaining
+          the clearly recognizable BRABUS DNA that has made the brand what it is
+          today.
+        </p>
+      </div>
+    </section>
+    <section id="col-grid">
+      <div class="col-photo">
+        <div
+          class="car1"
+          data-aos="fade-right"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/collection-1.webp" alt="" />
+          <div class="car1-info">
+            <a
+              href="https://www.brabus.com/en-int/cars/supercars/brabus-800-superblack-w465.html"
+            >
+              <h2>BRABUS 800 <br />SUPERBLACK</h2></a
+            >
+
+            <p>based on Mercedes-AMG G 63 (W 465)</p>
+          </div>
+        </div>
+        <div
+          class="car2"
+          data-aos="fade-left"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/collection-2.webp" alt="" />
+          <div class="car2-info">
+            <a
+              href="https://www.brabus.com/en-int/cars/tuning/for-mercedes/overview/p/g-klasse/w-465/amg-g-63.html"
+            >
+              <h2>REFINEMENT <br />PROGRAM</h2></a
+            >
+
+            <p>for Mercedes-AMG G 63 (W 465)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="col-grid">
+      <div
+        class="big-car"
+        data-aos="fade-up"
+        data-aos-delay="300"
+        data-aos-duration="1000"
+      >
+        <img src="asset/images/collection-3.webp" alt="" />
+        <div class="big-info">
+          <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+            BEYOND ALL
+          </h2>
+          <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+            BRABUS 700 BLUE SKY
+          </p>
+          <a
+            href="https://www.brabus.com/en-int/cars/supercars/brabus-700-bluesky-rr.html"
+          >
+            <button
+              data-aos="fade-up"
+              data-aos-delay="300"
+              data-aos-duration="1000"
+            >
+              Discover Now
+            </button></a
+          >
+        </div>
+      </div>
+    </section>
+    <section id="big">
+      <div class="big-boy">
+        <div
+          class="big-car-image"
+          data-aos="fade-left"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/collection-4.webp" alt="" />
+        </div>
+        <div class="big-car-info">
+          <h2
+            data-aos="fade-right"
+            data-aos-delay="300"
+            data-aos-duration="1000"
+          >
+            BRABUS Big Boy 1200
+          </h2>
+          <p
+            data-aos="fade-right"
+            data-aos-delay="300"
+            data-aos-duration="1000"
+          >
+            BUILT FOR THE JOURNEY - DESIGNED FOR LIVING. <br />
+            Learn more about the first BRABUS motorhome.
+          </p>
+          <a href="motar.html">
+            <button
+              data-aos="fade-right"
+              data-aos-delay="300"
+              data-aos-duration="1000"
+            >
+              Discover Now
+            </button></a
+          >
+        </div>
+      </div>
+    </section>
+    <section id="beyond-black">
+      <div class="beyond">
+        <div class="beyond-info">
+          <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+            BEYOND BLACK
+          </h2>
+          <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+            AN EXPLORATION OF COLOR
+          </p>
+        </div>
+        <div
+          class="beyond-img"
+          data-aos="fade-up"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <div class="bey1">
+            <img src="asset/images/beyond1.webp" alt="" />
+            <h4>BRABUS 900 PEETCH</h4>
+            <p>based on Porsche 911 Turbo S Cabriolet</p>
+          </div>
+          <div class="bey1">
+            <img src="asset/images/beyond2.webp" alt="" />
+            <h4>BRABUS 900 ROCKET R MEAN GREEN</h4>
+            <p>based on Porsche 911 Turbo S Coupe</p>
+          </div>
+          <div class="bey1">
+            <img src="asset/images/beyond3.webp" alt="" />
+            <h4>BRABUS 900 DEEP BLUE</h4>
+            <p>based on Porsche 911 Turbo S Cabriolet</p>
+          </div>
+          <div class="bey1">
+            <img src="asset/images/beyond4.webp" alt="" />
+            <h4>BRABUS 600 PEETCH</h4>
+            <p>based on Range Rover P530</p>
+          </div>
+          <div class="bey1">
+            <img src="asset/images/beyond5.webp" alt="" />
+            <h4>BRABUS 900 BICHROMATIC</h4>
+            <p>based on Mercedes-AMG GLS 63</p>
+          </div>
+          <div class="bey1">
+            <img src="asset/images/beyond6.webp" alt="" />
+            <h4>BRABUS 800 Mean Green</h4>
+            <p>based on Mercedes-AMG G 63 (W 465)</p>
+          </div>
+          <div class="bey1">
+            <img src="asset/images/beyond7.webp" alt="" />
+            <h4>BRABUS 800 DEEP BLUE</h4>
+            <p>based on Mercedes-AMG G 63 (W 465)</p>
+          </div>
+          <div class="bey1">
+            <img src="asset/images/beyond8.webp" alt="" />
+            <h4>BRABUS XLP 900 6x6 Deep Blue</h4>
+            <p>based on Mercedes-AMG G 63 (W 463A)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="two-cars">
+      <div class="two">
+        <div
+          class="rocket"
+          data-aos="fade-right"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/col6.webp" alt="" />
+          <div class="rocket-info">
+            <a
+              href="https://www.brabus.com/en-int/cars/supercars/brabus-rocket-gts.html"
+            >
+              <h2
+                data-aos="fade-right"
+                data-aos-delay="300"
+                data-aos-duration="1000"
+              >
+                BRABUS ROCKET <br />
+                GTS
+              </h2></a
+            >
+          </div>
+        </div>
+        <div
+          class="all"
+          data-aos="fade-left"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/col7.webp" alt="" />
+          <div class="all-info">
+            <a
+              href="https://www.brabus.com/en-int/cars/supercars/brabus-1000-allgray.html"
+            >
+              <h2
+                data-aos="fade-left"
+                data-aos-delay="300"
+                data-aos-duration="1000"
+              >
+                BRABUS 1000 <br />ALL GRAY
+              </h2></a
+            >
+
+            <p
+              data-aos="fade-left"
+              data-aos-delay="300"
+              data-aos-duration="1000"
+            >
+              based on Mercedes-AMG S 63 <br />
+              E Performance
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="superboat">
+      <h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+        SuperBoats
+      </h2>
+      <div class="sup-boat">
+        <div
+          class="sup1"
+          data-aos="fade-up"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/col8.webp" alt="" />
+          <a
+            href="https://www.brabus.com/en-int/boats/superboats/brabus-shadow-900-crosscabin-blackops-se.html"
+          >
+            <h4
+              data-aos="fade-up"
+              data-aos-delay="300"
+              data-aos-duration="1000"
+            >
+              BRABUS Shadow 900 XC <br />
+              Cross Cabin
+            </h4></a
+          >
+
+          <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+            BLACK OPS SIGNATURE EDITION
+          </p>
+        </div>
+        <div
+          class="sup2"
+          data-aos="fade-up"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/col9.webp" alt="" />
+          <a
+            href="https://www.brabus.com/en-int/boats/superboats/brabus-shadow-1000-st-pg-se.html"
+          >
+            <h4
+              data-aos="fade-up"
+              data-aos-delay="300"
+              data-aos-duration="1000"
+            >
+              BRABUS Shadow 1000 <br />Sun-Top
+            </h4></a
+          >
+
+          <p data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+            PLATINUM GRAY SIGNATURE EDITION
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="ambition">
+      <div class="amb-main">
+        <div class="amb-info">
+          <h2
+            data-aos="fade-left"
+            data-aos-delay="300"
+            data-aos-duration="1000"
+          >
+            Wear your ambition
+          </h2>
+          <p data-aos="fade-left" data-aos-delay="300" data-aos-duration="1000">
+            Discover the collection and find your personal fashion statement in
+            our online shop.
+          </p>
+          <a
+            href="https://shop.brabus.com/en/collections/brabus-x-root-atelier?_gl=1*154450k*_gcl_au*MzU0Mzk4Mjk5LjE3NTAzNDg1NDQ.*_ga*MjY2NDY5MTkwLjE3NTAzNDg1NDU.*_ga_2JGDBRWR13*czE3NTE1NDYxMTQkbzYzJGcxJHQxNzUxNTQ2ODUxJGozNCRsMCRoMA.."
+          >
+            <button
+              data-aos="fade-left"
+              data-aos-delay="300"
+              data-aos-duration="1000"
+            >
+              discover more
+            </button></a
+          >
+        </div>
+        <div
+          class="amb-img"
+          data-aos="fade-right"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/col10.webp" alt="" />
+        </div>
+      </div>
+    </section>
+    <section id="fashion">
+      <div class="fan-main">
+        <div
+          class="fan-img"
+          data-aos="fade-left"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/col11.webp" alt="" />
+        </div>
+        <div class="fan-info">
+          <h2
+            data-aos="fade-right"
+            data-aos-delay="300"
+            data-aos-duration="1000"
+          >
+            MASTERPIECE COllection
+          </h2>
+          <p
+            data-aos="fade-right"
+            data-aos-delay="300"
+            data-aos-duration="1000"
+          >
+            Tailor-made fashion pieces made from exclusive BRABUS leather.
+          </p>
+          <a
+            href="https://shop.brabus.com/collections/masterpiece-collection?_gl=1*rkhf9k*_gcl_au*MzU0Mzk4Mjk5LjE3NTAzNDg1NDQ.*_ga*MjY2NDY5MTkwLjE3NTAzNDg1NDU.*_ga_2JGDBRWR13*czE3NTE1NDYxMTQkbzYzJGcxJHQxNzUxNTQ2ODUxJGozNCRsMCRoMA.."
+            ><button
+              data-aos="fade-right"
+              data-aos-delay="300"
+              data-aos-duration="1000"
+            >
+              discover more
+            </button></a
+          >
+        </div>
+      </div>
+    </section>
+    <section id="youtube">
+      <div class="you1">
+        <img src="asset/images/col13.jpg" alt="" />
+        <div class="you2">
+          <a href="https://www.youtube.com/watch?v=0pkCwFUNoL4">
+            <h2>Watch on Youtube</h2></a
+          >
+        </div>
+      </div>
+    </section>
+    <section id="aura">
+      <div class="aura-main">
+        <div class="aura-info">
+          <h2
+            data-aos="fade-left"
+            data-aos-delay="300"
+            data-aos-duration="1000"
+          >
+            BRABUS Joins Aura <br />Blockchain Consortium
+          </h2>
+          <p data-aos="fade-left" data-aos-delay="300" data-aos-duration="1000">
+            Introducing the Digital Product Passport for BRABUS Masterpiece
+            supercars—a new initiative developed in collaboration with the Aura
+            Blockchain Consortium to enhance the exclusivity and certify the
+            authenticity of our most exclusive luxury products, beginning with
+            model year 2025.
+          </p>
+          <a href="https://www.brabus.com/en-int/brand/news/brabus-x-aura.html">
+            <button
+              data-aos="fade-left"
+              data-aos-delay="300"
+              data-aos-duration="1000"
+            >
+              find out more
+            </button></a
+          >
+        </div>
+        <div
+          class="aura-image"
+          data-aos="fade-right"
+          data-aos-delay="300"
+          data-aos-duration="1000"
+        >
+          <img src="asset/images/col12.webp" alt="" />
+        </div>
+      </div>
+    </section>
+    <div class="wave">
+      <img src="asset/images/wave2.avif" alt="" />
+    </div>
+    <footer data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+      <div
+        class="footer-container"
+        data-aos="fade-up"
+        data-aos-delay="300"
+        data-aos-duration="1000"
+      >
+        <div class="footer5">
+          <img src="asset/logo/babus.svg" alt="" />
+          <p>
+            We create modern, individual luxury by developing <br />
+            products with a wow factor that put our <br />
+            customers in the spotlight.
+          </p>
+        </div>
+        <div class="footer1">
+          <h3>Discover</h3>
+          <nav>
+            <ul>
+              <li>Tuning shop</li>
+              <li>Fashion shop</li>
+              <li>Cars4Sale</li>
+              <li>Who we are</li>
+              <li>Career</li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer2">
+          <h3>Get in Touch</h3>
+          <nav>
+            <ul>
+              <li>Find a dealer</li>
+              <li>Contact</li>
+              <li>Revocation & Claim</li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer3">
+          <h3>Information</h3>
+          <nav>
+            <ul>
+              <li>Imprint</li>
+              <li>Terms</li>
+
+              <li>Privacy policy</li>
+              <li>Cookie settings</li>
+            </ul>
+          </nav>
+        </div>
+        <div class="footer4">
+          <h3>Newsletter</h3>
+          <p>
+            Be part of the BRABUS community and subscribe <br />
+            to the newsletter now!
+          </p>
+          <button>NEWSLETTER</button>
+        </div>
+      </div>
+      <div class="footer-info">
+        <div class="copyright">
+          <p>© — BRABUS 2017–2025</p>
+        </div>
+        <div class="country">
+          <p>Country-/Language version</p>
+          <h5><i class="fa-solid fa-globe"></i> International - English</h5>
+        </div>
+        <div class="social-media">
+          <p>Social media</p>
+          <div class="links">
+            <div class="insta1"><i class="fa-brands fa-instagram"></i></div>
+            <div class="inkdine1"><i class="fa-brands fa-linkedin"></i></div>
+            <div class="facebook1"><i class="fa-brands fa-facebook-f"></i></div>
+            <div class="youtube1"><i class="fa-brands fa-youtube"></i></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+      Delay = 1000;
+    </script>
+    <script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById("dropdown");
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
+      }
+
+      function closeDropdown() {
+        document.getElementById("dropdown").style.display = "none";
+      }
+
+      // Optional: Click outside to close
+      document.addEventListener("click", function (event) {
+        var dropdown = document.getElementById("dropdown");
+        var button = document.querySelector(".cars-button");
+        if (
+          !dropdown.contains(event.target) &&
+          !button.contains(event.target)
+        ) {
+          dropdown.style.display = "none";
+        }
+      });
+    </script>
+
+    <script>
+      let ham = document.querySelector(".menu");
+      let aside = document.querySelector("aside");
+      ham.addEventListener("click", function () {
+        aside.style.transform = "translateX(0px)";
+      });
+      let close = document.querySelector(".close");
+      close.addEventListener("click", function () {
+        aside.style.transform = "translateX(-300px)";
+      });
+    </script>
+    <script>
+      function openPanel() {
+        document.getElementById("rightPanel").classList.add("open");
+      }
+
+      function closePanel() {
+        document.getElementById("rightPanel").classList.remove("open");
+      }
+
+      // Optional: close on outside click
+      document.addEventListener("click", function (e) {
+        const panel = document.getElementById("rightPanel");
+        const icon = document.querySelector(".icon-btn");
+        if (!panel.contains(e.target) && !icon.contains(e.target)) {
+          panel.classList.remove("open");
+        }
+      });
+    </script>
+    <script>
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+    </script>
+    <script>
+      const countries = [
+        { name: "India", code: "in" },
+        { name: "United States", code: "us" },
+        { name: "United Kingdom", code: "gb" },
+        { name: "Germany", code: "de" },
+        { name: "France", code: "fr" },
+        { name: "Canada", code: "ca" },
+        { name: "Australia", code: "au" },
+        { name: "Japan", code: "jp" },
+        { name: "Brazil", code: "br" },
+        { name: "South Africa", code: "za" },
+      ];
+
+      const dropdownCountry = document.getElementById("dropdown-country");
+      const selectedCountry = document.getElementById("selected-country");
+
+      function toggleCountryDropdown() {
+        dropdownCountry.style.display =
+          dropdownCountry.style.display === "block" ? "none" : "block";
+      }
+
+      function selectCountry(name, code) {
+        selectedCountry.innerHTML = `<img src="https://flagcdn.com/w20/${code}.png"> ${name}`;
+        dropdownCountry.style.display = "none";
+      }
+
+      countries.forEach((country) => {
+        const item = document.createElement("div");
+        item.className = "dropdown-item";
+        item.innerHTML = `<img src="https://flagcdn.com/w20/${country.code}.png"> ${country.name}`;
+        item.onclick = () => selectCountry(country.name, country.code);
+        dropdownCountry.appendChild(item);
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!e.target.closest(".dropdown-container")) {
+          dropdownCountry.style.display = "none";
+        }
+      });
+    </script>
+    <script>
+      function openCart() {
+        document.getElementById("cartPanel").style.right = "0";
+      }
+
+      function closeCart() {
+        document.getElementById("cartPanel").style.right = "-100%";
+      }
+    </script>
+  </body>
+</html>
